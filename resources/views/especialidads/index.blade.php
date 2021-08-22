@@ -35,7 +35,7 @@
     <tbody>
         @foreach( $especialidads as $especialidad )
         <tr>
-            <td>{{ $especialidad->idEspecialidad }}</td>
+            <td>{{ $especialidad->id }}</td>
 
             
             <td>{{ $especialidad->NombreEspecialidad }}</td>            
@@ -43,12 +43,12 @@
             
             <td>
                 
-            <a href="{{ url('/especialidads/'.$especialidad->IdEspecialidad.'/edit') }}" class="btn btn-warning">
+            <a href="{{ url('/especialidads/'.$especialidad->id.'/edit') }}" class="btn btn-warning">
                     Editar            
             </a>            
              | 
 
-            <form action="{{ url('/especialidads/'.$especialidad->IdEspecialidad ) }}" class="d-inline" method="post">
+            <form action="{{ url('/especialidads/'.$especialidad->id ) }}" class="d-inline" method="post">
             @csrf 
              {{ method_field('DELETE') }}
 

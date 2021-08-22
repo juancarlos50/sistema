@@ -79,10 +79,10 @@ class EspecialidadController extends Controller
      * @param  \App\Models\Especialidad  $especialidad
      * @return \Illuminate\Http\Response
      */
-    public function edit($IdEspecialidad)
+    public function edit($id)
     {
         //
-        $especialidads=Especialidad::findOrFail($IdEspecialidad);
+        $especialidads=Especialidad::findOrFail($id);
         return view('especialidads.edit', compact('especialidads') );
     }
 
@@ -93,7 +93,7 @@ class EspecialidadController extends Controller
      * @param  \App\Models\Especialidad  $especialidad
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $IdEspecialidad)
+    public function update(Request $request, $id)
     {
 
 
@@ -110,8 +110,8 @@ class EspecialidadController extends Controller
     
     $this->validate($request, $campos,$mensaje);
 
-        Especialidad::where('idEspecialidad','=',$IdEspecialidad)->update($datosespecialidads);
-        $especialidads=Especialidad::findOrFail($IdEspecialidad);
+        Especialidad::where('id','=',$id)->update($datosEspecialidads);
+        $especialidads=Especialidad::findOrFail($id);
 
          return redirect('especialidads')->with('mensaje','Se han Modificado los datos');
 
@@ -123,10 +123,10 @@ class EspecialidadController extends Controller
      * @param  \App\Models\Especialidad  $especialidad
      * @return \Illuminate\Http\Response
      */
-    public function destroy($IdEspecialidad)
+    public function destroy($id)
     {
         //
-        $especialidads=Especialidad::findOrFail($IdEspecialidad);
+        $especialidads=Especialidad::findOrFail($id);
 
         return redirect('especialidads')->with('mensaje','Se Elimino la Especialidad');
     }

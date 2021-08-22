@@ -33,23 +33,23 @@
     </thead>
 
     <tbody>
-        @foreach( $eps as $eps )
+        @foreach( $eps as $eps1 )
         <tr>
-            <td>{{ $eps->id }}</td>
+            <td>{{ $eps1->id }}</td>
 
             
 
-            <td>{{ $eps->NombreEps }}</td>            
-            <td>{{ $eps->TipoAfiliado }}</td>
+            <td>{{ $eps1->NombreEps }}</td>            
+            <td>{{ $eps1->TipoAfiliado }}</td>
             
             <td>
                 
-            <a href="{{ url('/eps/'.$eps->id.'/edit') }}" class="btn btn-warning">
+            <a href="{{ url('/eps/'.$eps1->id.'/edit') }}" class="btn btn-warning">
                     Editar            
             </a>            
              | 
 
-            <form action="{{ url('/eps/'.$eps->id ) }}" class="d-inline" method="post">
+            <form action="{{ url('/eps/'.$eps1->id ) }}" class="d-inline" method="post">
             @csrf 
              {{ method_field('DELETE') }}
 

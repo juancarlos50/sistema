@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
 
-<form action="{{ url('/especialidads/'.$especialidads->IdEspecialidad) }}" method="post" enctype="multipart/form-data">
+<form action="{{ url('/especialidads/'.$especialidads->id) }}" method="post" enctype="multipart/form-data">
 @csrf 
 {{ method_field('PATCH') }}
 

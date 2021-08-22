@@ -26,15 +26,19 @@ Route::get('/', function () {
 Route::get('/doctors/create', [DoctorController::class,'create']);
 */
 Route::resource('doctors', DoctorController::class)->middleware('auth');
+Route::resource('especialidads', EspecialidadController::class)->middleware('auth');
+Route::resource('eps', EpsController::class)->middleware('auth');
 Auth::routes();
 
 Route::get('/home', [DoctorController::class, 'index'])->name('home');
-Route::resource('especialidads', EspecialidadController::class);
+
 Route::get('/home', [EspecialidadController::class, 'index'])->name('home');
-Route::resource('eps', EpsController::class);
+
 Route::get('/home', [EpsController::class, 'index'])->name('home');
 
 Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/', [DoctorController::class, 'index'])->name('home');
+    Route::get('/', [EspecialidadController::class, 'index'])->name('home');
+    Route::get('/', [EpsController::class, 'index'])->name('home');
 });
