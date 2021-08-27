@@ -42,6 +42,9 @@
                     <li class="nav-item">
                     <a class="nav-link" href="{{ route('eps.index') }}">{{ __('Eps') }}</a>   
                     </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="{{ route('historias_clinicas.index') }}">{{ __('Historia Clinica') }}</a>   
+                    </li>
                     
                     </ul>
 
