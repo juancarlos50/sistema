@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\historias_clinicas;
-//use App\Http\Controllers\Controller;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
-use Illuminate\Support\Facades\Storage;
 
 class HistoriasClinicasController extends Controller
 {
@@ -18,8 +16,6 @@ class HistoriasClinicasController extends Controller
     public function index()
     {
         //
-        $datos['historias_clinicas']=historias_clinicas::paginate(2);
-        return view('historias_clinicas.index',$datos);
     }
 
     /**
@@ -30,7 +26,6 @@ class HistoriasClinicasController extends Controller
     public function create()
     {
         //
-        return view('historias_clinicas.create');
     }
 
     /**
@@ -42,35 +37,7 @@ class HistoriasClinicasController extends Controller
     public function store(Request $request)
     {
         //
-
-        $campos=[
-            'AntecedentesMedicos'=>'required|string|max:100',
-            'FechadeCreacion'=>'required|date|max:100',
-            'PrescripcionActual'=>'required|string|max:100',            
-            'RayosX'=>'max:10000|mimes:jpeg,png,jpg',
-    ];
-    $mensaje=[
-            'required'=>'Los :attribute es Requerido',
-            'Rayosx.required'=>'La Imagen es Requerida'
-
-    ];
-
-    $this->validate($request, $campos,$mensaje);
-
-
-        //$datosDoctors = request()->all();
-        $datoshistorias_clinicas = request()->except('_token');
-
-        if($request->hasFile('RayosX')){
-            $datoshistorias_clinicas['RayosX']=$request->file('RayosX')->store('uploads','public');
-        }
-        historias_clinicas::insert($datoshistorias_clinicas);
-
-        // return response()->json($datosDoctors);
-        return redirect('historias_clinicas')->with('mensaje','Historia Clinica agregada con exito');
-
     }
-
 
     /**
      * Display the specified resource.
@@ -89,12 +56,9 @@ class HistoriasClinicasController extends Controller
      * @param  \App\Models\historias_clinicas  $historias_clinicas
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(historias_clinicas $historias_clinicas)
     {
         //
-
-        $historias_clinicas=historias_clinicas::findOrFail($id);
-        return view('historias_clinicas.edit', compact('historias_clinicas') );
     }
 
     /**
@@ -104,46 +68,9 @@ class HistoriasClinicasController extends Controller
      * @param  \App\Models\historias_clinicas  $historias_clinicas
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, historias_clinicas $historias_clinicas)
     {
-        $campos=[
-            'AntecedentesMedicos'=>'required|string|max:100',
-            'FechadeCreacion'=>'required|date|max:100',
-            'PrescripcionActual'=>'required|string|max:100',            
-            'RayosX'=>'required|max:10000|mimes:jpeg,png,jpg',
-    ];
-    $mensaje=[
-            'required'=>'El :attribute es Requerido',
-            
-
-    ];
-
-    if($request->hasFile('RayosX')){
-        $campos=['RayosX'=>'required|max:10000|mimes:jpeg,png,jpg'];
-        $mensaje=['RayosX.required'=>'La Imagen es Requerida'];
-
-    }
-
-    $this->validate($request, $campos,$mensaje);
-
         //
-        $datoshistorias_clinicas = request()->except(['_token','_method']);
-        
-
-       if($request->hasFile('RayosX')){
-            $historias_clinicas=historias_clinicas::findOrFail($id);
-
-            Storage::delete('public/'.$historias_clinicas->RayosX);
-
-            $datoshistorias_clinicas['RayosX']=$request->file('RayosX')->store('uploads','public');
-        }
-
-        historias_clinicas::where('id','=',$id)->update($datoshistorias_clinicas);
-        $historias_clinicas=historias_clinicas::findOrFail($id);
-        //return view('doctors.edit', compact('doctors') );
-
-        return redirect('historias_clinicas')->with('mensaje','Se han Modificado los datos');
-
     }
 
     /**
@@ -152,17 +79,8 @@ class HistoriasClinicasController extends Controller
      * @param  \App\Models\historias_clinicas  $historias_clinicas
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(historias_clinicas $historias_clinicas)
     {
         //
-       $historias_clinicas=historias_clinicas::findOrFail($id);
-
-       if(Storage::delete('public/'.$historias_clinicas->RayosX)){
-        historias_clinicas::destroy($id);
-        }
-
-       
-
-        return redirect('historias_clinicas')->with('mensaje','Se Elimino Registro de la Historia');
     }
 }
