@@ -7,5 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Pacientes extends Model
 {
+    public function genero(){
+        return $this->belongsTo(Generos::class);
+    }
     use HasFactory;
 }

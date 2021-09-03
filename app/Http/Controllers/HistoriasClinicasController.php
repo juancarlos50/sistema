@@ -47,7 +47,7 @@ class HistoriasClinicasController extends Controller
             'AntecedentesMedicos'=>'required|string|max:100',
             'FechadeCreacion'=>'required|date|max:100',
             'PrescripcionActual'=>'required|string|max:100',            
-            'RayosX'=>'max:10000|mimes:jpeg,png,jpg',
+            'RayosX'=>'required|max:10000|mimes:jpeg,png,jpg',
     ];
     $mensaje=[
             'required'=>'Los :attribute es Requerido',

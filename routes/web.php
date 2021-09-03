@@ -5,6 +5,7 @@ use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\EspecialidadController;
 use App\Http\Controllers\EpsController;
 use App\Http\Controllers\HistoriasClinicasController;
+use App\Http\Controllers\PacientesController;
 
 /*
 |--------------------------------------------------------------------------
