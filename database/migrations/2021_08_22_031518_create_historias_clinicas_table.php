@@ -16,7 +16,7 @@ class CreateHistoriasClinicasTable extends Migration
         Schema::create('historias_clinicas', function (Blueprint $table) {
             $table->id();
             $table->string("AntecedentesMedicos");
-            $table->string("FechadeCreacion");
+            $table->date("DatosDeCreacion");
             $table->string("PrescripcionActual");
             $table->string("RayosX");
             $table->timestamps();

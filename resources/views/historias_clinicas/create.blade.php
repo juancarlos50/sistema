@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
 
-<form action="{{ url('/historias_clinicas') }}" method="post" enctype="multipart/form-data">
+<form action="{{ url('/historia_clinica') }}" method="post" enctype="multipart/form-data">
 @csrf 
 @include('historias_clinicas.form',['modo'=>'Crear']);
 
