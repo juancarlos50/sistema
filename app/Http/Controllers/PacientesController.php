@@ -51,7 +51,7 @@ class PacientesController extends Controller
                 'NombreAcudiente'=>'required|string|max:100',
                 'DireccionPaciente'=>'required|string|max:100',
                 'TelefonoPaciente'=>'required|string|max:100',
-                'FechaNacimiento'=>'required|date|max:100', 
+                'FechaNacimiento'=>'required|date', 
                 'EmailPaciente'=>'required|email',
                 'generos_id'=>'required|string|max:100',
         ];
@@ -118,7 +118,7 @@ class PacientesController extends Controller
             'NombreAcudiente'=>'required|string|max:100',
             'DireccionPaciente'=>'required|string|max:100',
             'TelefonoPaciente'=>'required|string|max:100',
-            'FechaNacimiento'=>'required|date|max:100', 
+            'FechaNacimiento'=>'required|date', 
             'EmailPaciente'=>'required|email',
             'generos_id'=>'required|string|max:100',
     ];

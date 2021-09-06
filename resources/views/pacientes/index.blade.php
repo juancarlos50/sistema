@@ -44,12 +44,7 @@
         @foreach( $pacientes as $paciente )
         <tr>
             <td>{{ $paciente->id }}</td>
-
-            <td>
             
-            </td>
-
-
             <td>{{ $paciente->NombrePaciente }}</td>            
             <td>{{ $paciente->TipoidPaciente }}</td>
             <td>{{ $paciente->NumeroidPaciente }}</td>

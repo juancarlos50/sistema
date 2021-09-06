@@ -55,7 +55,7 @@ value="{{ isset( $pacientes->DireccionPaciente)?$pacientes->DireccionPaciente:ol
 value="{{ isset( $pacientes->TelefonoPaciente)?$pacientes->TelefonoPaciente:old('TelefonoPaciente')}}" id="TelefonoPaciente" >
 <br>
 <label for="FechaNacimiento"> Fecha de Nacimiento </label>
-<input type="text" class="form-control" name="FechaNacimiento" 
+<input type="date" class="form-control" name="FechaNacimiento" 
 value="{{ isset( $pacientes->FechaNacimiento)?$pacientes->FechaNacimiento:old('FechaNacimiento')}}" id="FechaNacimiento" >
 <br>
 <label for="EmailPaciente"> Email Paciente </label>
