@@ -18,7 +18,7 @@
 
 
 
-<a href="{{ url('historias_clinicas/create') }}"  class="btn btn-success" >Crear Historias Clinicas</a>
+<a href="{{ url('historias_clinicas/create') }}"  class="btn btn-success" >Crear Historia Clinica</a>
 <br>
 <br>
 <table class="table table-light">
@@ -37,7 +37,7 @@
     <tbody>
         @foreach( $historias_clinicas as $historia_clinica )
         <tr>
-            <td>{{ $historias_clinicas->id }}</td>
+            <td>{{ $historia_clinica->id }}</td>
 
             <td>
             <img  class= "img-thumbnail img-fluid" src="{{ asset('storage').'/'.$historia_clinica->RayosX }}" width="80" alt="">           
@@ -51,8 +51,9 @@
                 
             <a href="{{ url('/historias_clinicas/'.$historia_clinica->id.'/edit') }}" class="btn btn-warning">
                     Editar            
-            </a>            
-     
+           </a>            
+            | 
+               
             <form action="{{ url('/historias_clinicas/'.$historia_clinica->id ) }}" class="d-inline" method="post">
             @csrf 
              {{ method_field('DELETE') }}

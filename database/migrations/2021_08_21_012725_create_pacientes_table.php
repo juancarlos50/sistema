@@ -28,7 +28,7 @@ class CreatePacientesTable extends Migration
             $table->string('NombreAcudiente');
             $table->string('DireccionPaciente');
             $table->string('TelefonoPaciente');
-            $table->string('FechaNacimiento');            
+            $table->date('FechaNacimiento');            
             $table->string('EmailPaciente');
             $table->unsignedBigInteger('generos_id'); //relacion con generos
             $table->foreign('generos_id')->references('id')->on('generos'); //clave foranea

@@ -22,7 +22,7 @@
 
 <label for="AntecedentesMedicos"> Antecedentes Medicos </label>
 <input type="text" class="form-control" name="AntecedentesMedicos" 
-value="{{ isset( $historias_clinicas->AntecedentesMedicos)?$historias_clinica->AntecedentesMedicos:old('AntecedentesMedicos')}}" id="AntecedentesMedicos" >
+value="{{ isset( $historias_clinicas->AntecedentesMedicos)?$historias_clinicas->AntecedentesMedicos:old('AntecedentesMedicos')}}" id="AntecedentesMedicos" >
 <br>
 </div>
 
@@ -34,7 +34,7 @@ value="{{ isset( $historias_clinicas->DatosDeCreacion)?$historias_clinicas->Dato
 <input type="text" class="form-control" name="PrescripcionActual" 
 value="{{ isset( $historias_clinicas->PrescripcionActual)?$historias_clinicas->PrescripcionActual:old('PrescripcionActual')}}" id="PrescripcionActual" >
 <br>
-<label for="RayosX"> Foto </label>
+<label for="RayosX"> Rayos X </label>
 @if(isset($historias_clinicas->RayosX))
 <img class= "img-thumbnail img-fluid" src="{{ asset('storage').'/'.$historias_clinicas->RayosX }}" width="80" alt="">
 @endif

@@ -126,7 +126,8 @@ class EspecialidadController extends Controller
     public function destroy($id)
     {
         //
-        $especialidads=Especialidad::findOrFail($id);
+        $especialidads=Especialidad::find($id);
+        $especialidads->delete();
 
         return redirect('especialidads')->with('mensaje','Se Elimino la Especialidad');
     }

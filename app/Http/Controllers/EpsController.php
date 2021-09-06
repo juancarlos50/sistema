@@ -133,7 +133,8 @@ class EpsController extends Controller
     public function destroy($id)
     {
         //
-        $eps=Eps::findOrFail($id);
+        $eps=Eps::find($id);
+        $eps->delete();
 
         return redirect('eps')->with('mensaje','Se Elimino Registro de la EPS');
 
