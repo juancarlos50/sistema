@@ -45,13 +45,13 @@ class HistoriasClinicasController extends Controller
 
         $campos=[
             'AntecedentesMedicos'=>'required|string|max:100',
-            'FechadeCreacion'=>'required|date',
+            'DatosDeCreacion'=>'required|date',
             'PrescripcionActual'=>'required|string|max:100',            
             //'RayosX'=>'required|max:10000|mimes:jpeg,png,jpg',
         ];
         $mensaje=[
             'required'=>'Los :attribute es Requerido',
-            //'Rayosx.required'=>'La Imagen es Requerida'
+            //'RayosX.required'=>'La Imagen es Requerida'
 
         ];
 
@@ -108,9 +108,9 @@ class HistoriasClinicasController extends Controller
 
         $campos=[
             'AntecedentesMedicos'=>'required|string|max:100',
-            'FechadeCreacion'=>'required|date',
+            'DatosDeCreacion'=>'required|date',
             'PrescripcionActual'=>'required|string|max:100',            
-            'RayosX'=>'required|max:10000|mimes:jpeg,png,jpg',
+            
     ];
         $mensaje=[
             'required'=>'Los :attribute es Requerido',
