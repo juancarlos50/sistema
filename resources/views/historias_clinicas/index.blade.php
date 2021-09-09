@@ -47,7 +47,6 @@
             <td>{{ $historia_clinica->AntecedentesMedicos }}</td>            
             <td>{{ $historia_clinica->DatosDeCreacion }}</td>
             <td>{{ $historia_clinica->PrescripcionActual }}</td>
-            <td>{{ $historia_clinica->RayosX }}</td>
             <td>
                 
             <a href="{{ url('/historias_clinicas/'.$historia_clinica->id.'/edit') }}" class="btn btn-warning">
