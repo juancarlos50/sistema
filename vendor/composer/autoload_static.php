@@ -528,6 +528,7 @@ class ComposerStaticInit5ca23c3504e0201507ff9ead36016045
     public static $classMap = array (
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
+        'App\\Http\\Controllers\\AgendamientoDeCitasController' => __DIR__ . '/../..' . '/app/Http/Controllers/AgendamientoDeCitasController.php',
         'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
         'App\\Http\\Controllers\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/LoginController.php',
@@ -559,6 +560,7 @@ class ComposerStaticInit5ca23c3504e0201507ff9ead36016045
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Models\\agendamiento_de_citas' => __DIR__ . '/../..' . '/app/Models/agendamiento_de_citas.php',
         'App\\Models\\historias_clinicas' => __DIR__ . '/../..' . '/app/Models/historias_clinicas.php',
+        'App\\Models\\procedimientos' => __DIR__ . '/../..' . '/app/Models/procedimientos.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',

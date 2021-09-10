@@ -48,7 +48,8 @@
                     <li class="nav-item">
                     <a class="nav-link" href="{{ route('pacientes.index') }}">{{ __('Pacientes') }}</a>   
                     </li>
-                    
+                    <li class="nav-item">
+                    <a class="nav-link" href="{{ route('agendamiento_de_citas.index') }}">{{ __('agendar citas') }}</a> 
                     </ul>
 
                    
