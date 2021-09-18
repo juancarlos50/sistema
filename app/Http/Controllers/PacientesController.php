@@ -51,15 +51,15 @@ class PacientesController extends Controller
                 'NombreAcudiente'=>'required|string|max:100',
                 'DireccionPaciente'=>'required|string|max:100',
                 'TelefonoPaciente'=>'required|string|max:100',
-                'FechaNacimiento'=>'required|date', 
+                'FechaNacimiento'=>'required|date',
                 'EmailPaciente'=>'required|email',
                 'generos_id'=>'required|string|max:100',
         ];
         $mensaje=[
                 'required'=>'El :attribute es Requerido',
-            
+
         ];
-    
+
 
         $this->validate($request, $campos,$mensaje);
 
@@ -67,7 +67,7 @@ class PacientesController extends Controller
         //$datosDoctors = request()->all();
         $datosPacientes = request()->except('_token');
 
-    
+
         Pacientes::insert($datosPacientes);
 
         // return response()->json($datosDoctors);
@@ -118,16 +118,16 @@ class PacientesController extends Controller
             'NombreAcudiente'=>'required|string|max:100',
             'DireccionPaciente'=>'required|string|max:100',
             'TelefonoPaciente'=>'required|string|max:100',
-            'FechaNacimiento'=>'required|date', 
+            'FechaNacimiento'=>'required|date',
             'EmailPaciente'=>'required|email',
             'generos_id'=>'required|string|max:100',
     ];
     $mensaje=[
             'required'=>'El :attribute es Requerido',
-    
-    ];  
-       
-    
+
+    ];
+
+
     $this->validate($request, $campos,$mensaje);
 
 
@@ -138,7 +138,7 @@ class PacientesController extends Controller
          $pacientes=Pacientes::findOrFail($id);
         //return view('doctors.edit', compact('doctors') );
 
-        return redirect('pacientes')->with('mensaje','Se han Modificado los datos');
+        return redirect('pacientes')->with('mensaje','Se han modificado los datos');
 
     }
 

@@ -13,23 +13,23 @@
 
 </div>
 
-   
+
 
 @endif
 
 
-<div> 
+<div>
 
 <label for="SalaDeConsulta"> Consultorio </label>
-<input type="text" class="form-control" name="SalaDeConsulta" 
+<input type="text" class="form-control" name="SalaDeConsulta"
 value="{{ isset( $agendamiento_de_citas->SalaDeConsulta)?$agendamiento_de_citas->SalaDeConsulta:old('SalaDeConsulta')}}" id="SalaDeConsulta" >
 <br>
 </div>
 
-<div> 
+<div>
 
 <label for="HoraYFecha"> Hora Y Fecha Cita Medica </label>
-<input type="text" class="form-control" name="HoraYFecha" 
+<input type="date" class="form-control" name="HoraYFecha"
 value="{{ isset( $agendamiento_de_citas->HoraYFecha)?$agendamiento_de_citas->HoraYFecha:old('HoraYFecha')}}" id="HoraYFecha" >
 <br>
 </div>

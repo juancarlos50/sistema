@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\agendamiento_de_citas;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+
 
 class AgendamientoDeCitasController extends Controller
 {
@@ -16,6 +18,8 @@ class AgendamientoDeCitasController extends Controller
     public function index()
     {
         //
+        $datos['agendamiento_de_citas']=agendamiento_de_citas::paginate(2);
+        return view('agendamiento_de_citas.index',$datos);
     }
 
     /**
@@ -26,6 +30,7 @@ class AgendamientoDeCitasController extends Controller
     public function create()
     {
         //
+        return view('agendamiento_de_citas.create');
     }
 
     /**
@@ -37,6 +42,25 @@ class AgendamientoDeCitasController extends Controller
     public function store(Request $request)
     {
         //
+
+        $campos=[
+            'SalaDeConsulta'=>'required|string|max:100',
+            'HoraYFecha'=>'required|date|',
+          //  'especialidads_id'=>'required|string|max:100',
+
+        ];
+        $mensaje=[
+            'required'=>'El :attribute es Requerido',
+        ];
+
+        $this->validate($request, $campos,$mensaje);
+
+        $datosagendamiento_de_citas = request()->except('_token');
+
+
+        agendamiento_de_citas::insert($datosagendamiento_de_citas);
+
+        return redirect('agendamiento_de_citas')->with('mensaje','Cita creada con éxito');
     }
 
     /**
@@ -56,9 +80,12 @@ class AgendamientoDeCitasController extends Controller
      * @param  \App\Models\agendamiento_de_citas  $agendamiento_de_citas
      * @return \Illuminate\Http\Response
      */
-    public function edit(agendamiento_de_citas $agendamiento_de_citas)
+    public function edit($id)
     {
         //
+        $agendamiento_de_citas=agendamiento_de_citas::findOrFail($id);
+        return view('agendamiento_de_citas.edit', compact('agendamiento_de_citas') );
+
     }
 
     /**
@@ -71,6 +98,30 @@ class AgendamientoDeCitasController extends Controller
     public function update(Request $request, agendamiento_de_citas $agendamiento_de_citas)
     {
         //
+
+        $campos=[
+            'SalaDeConsulta'=>'required|string|max:100',
+            'HoraYFecha'=>'required|date',
+         //   'especialidads_id'=>'required|string|max:100',
+
+
+        ];
+        $mensaje=[
+            'required'=>'Los :attribute es Requerido',
+
+        ];
+
+        $this->validate($request, $campos,$mensaje);
+
+
+        //
+        $datosagendamiento_de_citas = request()->except(['_token','_method']);
+
+        agendamiento_de_citas::where('id','=',$id)->update($datosagendamiento_de_citas);
+        $agendamiento_de_citas=agendamiento_de_citas::findOrFail($id);
+        //return view('agendamiento_de_citas.edit', compact('agendamiento_de_citas') );
+
+        return redirect('agendamiento_de_citas')->with('mensaje','Se han modificado los datos');
     }
 
     /**
@@ -82,5 +133,8 @@ class AgendamientoDeCitasController extends Controller
     public function destroy(agendamiento_de_citas $agendamiento_de_citas)
     {
         //
+        $agendamiento_de_citas=agendamiento_de_citas::findOrFail($id);
+
+        return redirect('agendamiento_de_citas')->with('mensaje','Se Elimino El Agendamiento');
     }
 }

@@ -7,5 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class agendamiento_de_citas extends Model
 {
+    public function especialidad(){
+        return $this->belongsTo(Especialidad::class);
+    }
     use HasFactory;
 }

@@ -27,7 +27,7 @@
         <tr>
             <th>Código</th>
             <th>Consultorio</th>
-            <th>Hora Y Fecha Cita Medica</th>                 
+            <th>Hora Y Fecha Cita Medica</th>
             <th>Acciones</th>
         </tr>
     </thead>
@@ -37,19 +37,19 @@
         <tr>
             <td>{{ $agendamiento_de_cita->id }}</td>
 
-            
 
-            <td>{{ $agendamiento_de_cita->SalaDeConsulta }}</td>            
+
+            <td>{{ $agendamiento_de_cita->SalaDeConsulta }}</td>
             <td>{{ $agendamiento_de_cita->HoraYFecha }}</td>
-            
+
             <td>
-                
+
             <a href="{{ url('/agendamiento_de_citas/'.$agendamiento_de_cita->id.'/edit') }}" class="btn btn-warning">
-                    Editar            
-            </a>            
+                    Editar
+            </a>
 
             <form action="{{ url('/agendamiento_de_citas/'.$agendamiento_de_cita->id ) }}" class="d-inline" method="post">
-            @csrf 
+            @csrf
              {{ method_field('DELETE') }}
 
             <input class="btn btn-danger" type="submit" onclick="return confirm('¿ Esta seguro de Borrar el registro ?')"
@@ -58,9 +58,9 @@
         </form>
         </tr>
         @endforeach
-                
+
     </tbody>
 </table>
- {{$agendamiento_de_cita->links()}} 
+ {{$agendamiento_de_citas->links()}}
 </div>
 @endsection

@@ -13,10 +13,19 @@ class CreateAgendamientoDeCitasTable extends Migration
      */
     public function up()
     {
+       // Schema::create('especialidads', function (Blueprint $table) {
+          //  $table->id();
+          //  $table->string('NombreEspecialidad');
+           // $table->timestamps();
+       // );
+
         Schema::create('agendamiento_de_citas', function (Blueprint $table) {
             $table->id();
-            $table->string("SalaDeConsulta");
-            $table->datetime("HoraYFecha");
+            $table->string("SaladeConsulta");
+            $table->date("HorayFecha");
+           // $table->unsignedBigInteger('especialidads_id'); //relacion con especialidad
+           // $table->foreign('especialidads_id')->references('id')->on(' '); //clave foranea
+
             $table->timestamps();
         });
     }
@@ -29,5 +38,6 @@ class CreateAgendamientoDeCitasTable extends Migration
     public function down()
     {
         Schema::dropIfExists('agendamiento_de_citas');
+      //  Schema::dropIfExists('especialidads');
     }
 }
