@@ -34,25 +34,29 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                    <a class="nav-link" href="{{ route('doctors.index') }}">{{ __('Doctores') }}</a>   
+                    <a class="nav-link" href="{{ route('doctors.index') }}">{{ __('Doctores') }}</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="{{ route('especialidads.index') }}">{{ __('Especialidades') }}</a>   
+                    <a class="nav-link" href="{{ route('especialidads.index') }}">{{ __('Especialidades') }}</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="{{ route('eps.index') }}">{{ __('Eps') }}</a>   
+                    <a class="nav-link" href="{{ route('eps.index') }}">{{ __('Eps') }}</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="{{ route('historias_clinicas.index') }}">{{ __('Historia Clinica') }}</a>   
+                    <a class="nav-link" href="{{ route('historias_clinicas.index') }}">{{ __('Historia Clinica') }}</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="{{ route('pacientes.index') }}">{{ __('Pacientes') }}</a>   
+                    <a class="nav-link" href="{{ route('pacientes.index') }}">{{ __('Pacientes') }}</a>
                     </li>
                     <li class="nav-item">
+<<<<<<< Updated upstream
                     <a class="nav-link" href="{{ route('agendamiento_de_citas.index') }}">{{ __('Agendar Cita') }}</a> 
+=======
+                    <a class="nav-link" href="{{ route('agendamiento_de_citas.index') }}">{{ __('Agendar Cita') }}</a>
+>>>>>>> Stashed changes
                     </ul>
 
-                   
+
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
