@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Pacientes;
 use Illuminate\Http\Request;
+use App\Models\Generos;
 
 use Illuminate\Support\Facades\Storage;
 
@@ -29,7 +30,8 @@ class PacientesController extends Controller
     public function create()
     {
         //
-        return view('pacientes.create');
+        $generos = Generos::all();
+        return view('pacientes.create', compact('generos'));
     }
 
     /**

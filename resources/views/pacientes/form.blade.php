@@ -63,8 +63,12 @@ value="{{ isset( $pacientes->FechaNacimiento)?$pacientes->FechaNacimiento:old('F
 value="{{ isset( $pacientes->EmailPaciente)?$pacientes->EmailPaciente:old('EmailPaciente')}}" id="EmailPaciente" >
 <br>
 <label for="generos_id"> Genero </label>
-<input type="text" class="form-control" name="generos_id" 
-value="{{ isset( $pacientes->generos_id)?$pacientes->generos_id:old('generos_id')}}" id="generos_id" >
+<select name="generos_id" id="inputGenero_id" class="form-control">
+    <option value="">-- Escoja el genero --</option>
+    @foreach ($generos as $genero)
+        <option value="{{ $genero['id'] }}">{{ $genero['NombreGenero'] }}</option>
+    @endforeach    
+</select>
 
 <br>
 
