@@ -13,11 +13,6 @@
 
 </div>
 @endif
-
-
-
-
-
 <a href="{{ url('agendamiento_de_citas/create') }}"  class="btn btn-success" >Crear Cita Medica</a>
 <br>
 <br>

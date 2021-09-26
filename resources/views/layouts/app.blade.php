@@ -49,12 +49,9 @@
                     <a class="nav-link" href="{{ route('pacientes.index') }}">{{ __('Pacientes') }}</a>
                     </li>
                     <li class="nav-item">
-<<<<<<< Updated upstream
-                    <a class="nav-link" href="{{ route('agendamiento_de_citas.index') }}">{{ __('Agendar Cita') }}</a> 
-=======
                     <a class="nav-link" href="{{ route('agendamiento_de_citas.index') }}">{{ __('Agendar Cita') }}</a>
->>>>>>> Stashed changes
-                    </ul>
+                    </li>
+                     </ul>
 
 
                     <!-- Right Side Of Navbar -->
@@ -63,13 +60,13 @@
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Iniciar Sesión') }}</a>
                                 </li>
                             @endif
 
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Registrarse') }}</a>
                                 </li>
                             @endif
                         @else
