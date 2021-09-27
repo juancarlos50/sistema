@@ -17,7 +17,6 @@
 
 
 
-
 <a href="{{ url('historias_clinicas/create') }}"  class="btn btn-success" >Crear Historia Clinica</a>
 <br>
 <br>
@@ -29,7 +28,8 @@
             <th>RayosX</th>
             <th>Antecedentes Medicos</th>
             <th>Fecha De Creacion</th>
-            <th>Prescripcion Actual</th>           
+            <th>Prescripcion Actual</th> 
+            <th>Procedimientos</th>          
             <th>Acciones</th>
         </tr>
     </thead>
@@ -47,8 +47,14 @@
             <td>{{ $historia_clinica->AntecedentesMedicos }}</td>            
             <td>{{ $historia_clinica->DatosDeCreacion }}</td>
             <td>{{ $historia_clinica->PrescripcionActual }}</td>
+
+            <td>    
+            <a href="{{ url('procedimientos') }}"  class="btn btn-info">
+                    ver
+            </a>
+            </td>
             <td>
-                
+             
             <a href="{{ url('/historias_clinicas/'.$historia_clinica->id.'/edit') }}" class="btn btn-warning">
                     Editar            
             </a>            

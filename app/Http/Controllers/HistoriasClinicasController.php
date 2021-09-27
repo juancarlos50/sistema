@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\historias_clinicas;
+use App\models\procedimientos;
 use App\Http\Controllers\Controller;
-
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+
 
 class HistoriasClinicasController extends Controller
 {
@@ -132,7 +133,7 @@ class HistoriasClinicasController extends Controller
         if($request->hasFile('RayosX')){
             $historias_clinicas=historias_clinicas::findOrFail($id);
 
-            Storage::delete('public/'.$historias_clinicas->RayosX);
+            Storage::delete('public/uploads'.$historias_clinicas->RayosX);
 
             $datoshistorias_clinicas['RayosX']=$request->file('RayosX')->store('uploads','public');
         }
