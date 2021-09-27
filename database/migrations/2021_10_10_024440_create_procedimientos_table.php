@@ -15,6 +15,9 @@ class CreateProcedimientosTable extends Migration
     {
         Schema::create('procedimientos', function (Blueprint $table) {
             $table->id();
+            $table->date("FechaProcedimiento");
+            $table->string("DescripcionProcedimiento");
+            $table->string("RadiografiaProcedimiento");
             $table->timestamps();
         });
     }

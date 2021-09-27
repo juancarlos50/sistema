@@ -23,6 +23,7 @@ return array(
     'App\\Http\\Controllers\\HistoriasClinicasController' => $baseDir . '/app/Http/Controllers/HistoriasClinicasController.php',
     'App\\Http\\Controllers\\HomeController' => $baseDir . '/app/Http/Controllers/HomeController.php',
     'App\\Http\\Controllers\\PacientesController' => $baseDir . '/app/Http/Controllers/PacientesController.php',
+    'App\\Http\\Controllers\\ProcedimientosController' => $baseDir . '/app/Http/Controllers/ProcedimientosController.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
     'App\\Http\\Middleware\\Authenticate' => $baseDir . '/app/Http/Middleware/Authenticate.php',
     'App\\Http\\Middleware\\EncryptCookies' => $baseDir . '/app/Http/Middleware/EncryptCookies.php',
