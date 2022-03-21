@@ -43,7 +43,7 @@
             <td>{{ $doctor->id }}</td>
 
             <td>
-            <img  class= "img-thumbnail img-fluid" src="{{ asset('storage/public/uploads').'/'.$doctor->ImagenDoctor }}" width="80" alt="">           
+            <img  class= "img-thumbnail img-fluid" src="{{ asset('storage').'/'.$doctor->ImagenDoctor }}" width="80" alt="">           
             </td>
 
 
@@ -66,7 +66,7 @@
             <input class="btn btn-danger" type="submit" onclick="return confirm('¿ Esta seguro de Borrar el registro ?')"
              value="Borrar">
 
-            </form>
+             </form>
         </tr>
         @endforeach
                 
