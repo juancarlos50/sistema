@@ -33,7 +33,7 @@
             <th>Direccion Doctor</th>
             <th>Telefono Doctor</th>
             <th>Email Doctor</th>           
-            <th>Acciones</th>
+            <th>Acciones   </th>
         </tr>
     </thead>
 
@@ -56,7 +56,7 @@
             <td>
                 
             <a href="{{ url('/doctors/'.$doctor->id.'/edit') }}" class="btn btn-warning">
-                    Editar            
+                Editar
             </a>            
              | 
             <form action="{{ url('/doctors/'.$doctor->id ) }}" class="d-inline" method="post">

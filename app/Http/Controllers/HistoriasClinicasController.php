@@ -58,16 +58,10 @@ class HistoriasClinicasController extends Controller
 
          $this->validate($request, $campos,$mensaje);
 
-
-        //$datoshistorias_clinicas = request()->all();
         $datoshistorias_clinicas = request()->except('_token');
 
-        //if($request->hasFile('RayosX')){
-            //$datoshistorias_clinicas['RayosX']=$request->file('RayosX')->store('uploads','public');
-        //}
         historias_clinicas::insert($datoshistorias_clinicas);
 
-        // return response()->json($datoshistorias_clinicas);
         return redirect('historias_clinicas')->with('mensaje','Historia Clinica agregada con exito');
 
     }
@@ -78,9 +72,10 @@ class HistoriasClinicasController extends Controller
      * @param  \App\Models\historias_clinicas  $historias_clinicas
      * @return \Illuminate\Http\Response
      */
-    public function show(historias_clinicas $historias_clinicas)
+    public function show($id)
     {
-        //
+        $datovista = historias_clinicas::find($id);
+        return view('historias_clinicas.show' , compact('datovista'));
     }
 
     /**

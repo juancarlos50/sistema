@@ -95,7 +95,7 @@ class AgendamientoDeCitasController extends Controller
      * @param  \App\Models\agendamiento_de_citas  $agendamiento_de_citas
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, agendamiento_de_citas $agendamiento_de_citas)
+    public function update(Request $request, $id)
     {
         //
 
@@ -130,10 +130,11 @@ class AgendamientoDeCitasController extends Controller
      * @param  \App\Models\agendamiento_de_citas  $agendamiento_de_citas
      * @return \Illuminate\Http\Response
      */
-    public function destroy(agendamiento_de_citas $agendamiento_de_citas)
+    public function destroy($id)
     {
         //
-        $agendamiento_de_citas=agendamiento_de_citas::findOrFail($id);
+        $datos['agendamiento_de_citas']=agendamiento_de_citas::findOrFail($id);
+        agendamiento_de_citas::destroy($id);
 
         return redirect('agendamiento_de_citas')->with('mensaje','Se Elimino El Agendamiento');
     }

@@ -30,7 +30,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => 'a263ecb1e008989b28c936311b3f4675506a8f63',
+    'reference' => 'fd681f0f18c6703779bfa5d18c6f4d94c820ebb7',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -228,6 +228,15 @@ private static $installed = array (
       array (
       ),
       'reference' => '8c3d0a3f6af734494ad8f6fbbee0ba92422859f3',
+    ),
+    'ibex/crud-generator' => 
+    array (
+      'pretty_version' => 'v1.3.3',
+      'version' => '1.3.3.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '5736a2c53c5534cceb03d97ce9613aacb97c810c',
     ),
     'illuminate/auth' => 
     array (
@@ -469,7 +478,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => 'a263ecb1e008989b28c936311b3f4675506a8f63',
+      'reference' => 'fd681f0f18c6703779bfa5d18c6f4d94c820ebb7',
     ),
     'laravel/sail' => 
     array (
@@ -497,6 +506,15 @@ private static $installed = array (
       array (
       ),
       'reference' => '07d725813350c695c779382cbd6dac0ab8665537',
+    ),
+    'laravelcollective/html' => 
+    array (
+      'pretty_version' => 'v6.3.0',
+      'version' => '6.3.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '78c3cb516ac9e6d3d76cad9191f81d217302dea6',
     ),
     'league/commonmark' => 
     array (

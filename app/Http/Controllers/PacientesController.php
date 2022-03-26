@@ -31,7 +31,7 @@ class PacientesController extends Controller
     {
         //
         $generos = Generos::all();
-        return view('pacientes.create', compact('generos'));
+        return view('pacientes.create', compact('generos',$generos));
     }
 
     /**
@@ -55,7 +55,7 @@ class PacientesController extends Controller
                 'TelefonoPaciente'=>'required|string|max:100',
                 'FechaNacimiento'=>'required|date',
                 'EmailPaciente'=>'required|email',
-                'generos_id'=>'required|string|max:100',
+                
         ];
         $mensaje=[
                 'required'=>'El :attribute es Requerido',
@@ -97,7 +97,9 @@ class PacientesController extends Controller
     {
         //
         $pacientes=Pacientes::findOrFail($id);
-        return view('pacientes.edit', compact('pacientes') );
+        return view('pacientes.edit', compact('pacientes'));
+        $generos=Generos::all();
+        return view('pacientes.edit', compact('generos', $generos));
     }
 
     /**
@@ -122,7 +124,7 @@ class PacientesController extends Controller
             'TelefonoPaciente'=>'required|string|max:100',
             'FechaNacimiento'=>'required|date',
             'EmailPaciente'=>'required|email',
-            'generos_id'=>'required|string|max:100',
+            
     ];
     $mensaje=[
             'required'=>'El :attribute es Requerido',
@@ -154,6 +156,7 @@ class PacientesController extends Controller
     {
         //
         $pacientes=Pacientes::findOrFail($id);
+        $pacientes->delete();
 
         return redirect('pacientes')->with('mensaje','Se Elimino Registro de el Paciente');
     }

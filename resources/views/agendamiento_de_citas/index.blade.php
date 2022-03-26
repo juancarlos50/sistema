@@ -32,10 +32,9 @@
         <tr>
             <td>{{ $agendamiento_de_cita->id }}</td>
 
+            <td>{{ $agendamiento_de_cita->SaladeConsulta }}</td>
 
-
-            <td>{{ $agendamiento_de_cita->SalaDeConsulta }}</td>
-            <td>{{ $agendamiento_de_cita->HoraYFecha }}</td>
+            <td>{{ $agendamiento_de_cita->HorayFecha }}</td>
 
             <td>
 

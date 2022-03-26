@@ -56,10 +56,9 @@
             <td>
              
             <a href="{{ url('/historias_clinicas/'.$historia_clinica->id.'/edit') }}" class="btn btn-warning">
-                    Editar            
+                    editar
             </a>            
-             | 
-               
+             |
             <form action="{{ url('/historias_clinicas/'.$historia_clinica->id ) }}" class="d-inline" method="post">
             @csrf 
              {{ method_field('DELETE') }}
@@ -67,7 +66,7 @@
             <input class="btn btn-danger" type="submit" onclick="return confirm('¿ Esta seguro de Borrar el registro ?')"
              value="Borrar">
 
-        </form>
+            </form>
         </tr>
         @endforeach
                 

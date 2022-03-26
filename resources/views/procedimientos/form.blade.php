@@ -40,6 +40,6 @@ value="{{ isset( $procedimientos->DescripcionProcedimiento)?$procedimientos->Des
 <br>
 <input class="btn btn-success" type="submit" value="{{ $modo }} datos" >
 
-<a class="btn btn-primary" href="{{ url('doctors/') }}">Regresar</a>
+<a class="btn btn-primary" href="{{ url('procedimientos') }}">Regresar</a>
 
 <br>

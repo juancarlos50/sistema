@@ -65,8 +65,9 @@ value="{{ isset( $pacientes->EmailPaciente)?$pacientes->EmailPaciente:old('Email
 <label for="generos_id"> Genero </label>
 <select name="generos_id" id="inputGenero_id" class="form-control">
     <option value="">-- Escoja el genero --</option>
+    
     @foreach ($generos as $genero)
-        <option value="{{ $genero['id'] }}">{{ $genero['NombreGenero'] }}</option>
+        <option value="{{$genero->id}}">{{ $genero->NombreGenero }}</option>
     @endforeach    
 </select>
 
