@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Pacientes extends Model
 {
     public function genero(){
-        return $this->hasOne("App\Models\Generos", 'id','genero');
+        return $this->hasOne("App\Models\Generos", 'id','generos_id');
     }
     use HasFactory;
 }

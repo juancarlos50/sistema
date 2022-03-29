@@ -1,6 +1,8 @@
-@extends('layouts.app')
+@extends('adminlte::page')
 
-@section('content')
+@section('title', 'Dashboard')
+
+@section('content_header')
 <div class="container">
 
 
@@ -57,4 +59,16 @@
 </table>
  {{$agendamiento_de_citas->links()}}
 </div>
-@endsection
+@stop
+
+@section('content')
+    <p>Welcome to this beautiful admin panel.</p>
+@stop
+
+@section('css')
+    <link rel="stylesheet" href="/css/admin_custom.css">
+@stop
+
+@section('js')
+    <script> console.log('Hi!'); </script>
+@stop

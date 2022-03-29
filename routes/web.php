@@ -27,16 +27,12 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-/*Route::get('/doctors', function () {
-    return view('doctors.index');
-});
-
-Route::get('/doctors/create', [DoctorController::class,'create']);
-*/
+/*Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');*/
 
 
 
-//Route::resource('cliente', ClienteController::class);
 Route::resource('doctors', DoctorController::class)->middleware('auth');
 Route::resource('especialidads', EspecialidadController::class)->middleware('auth');
 Route::resource('eps', EpsController::class)->middleware('auth');

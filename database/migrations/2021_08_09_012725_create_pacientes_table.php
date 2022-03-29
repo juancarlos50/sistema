@@ -32,7 +32,6 @@ class CreatePacientesTable extends Migration
             $table->string('EmailPaciente');
             $table->unsignedBigInteger('generos_id'); //relacion con generos
             $table->foreign('generos_id')->references('id')->on('generos'); //clave foranea
-            
             $table->timestamps();
         });
     }

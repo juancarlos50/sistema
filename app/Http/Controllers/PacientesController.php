@@ -19,7 +19,8 @@ class PacientesController extends Controller
     {
         //
         $datos['pacientes']=Pacientes::paginate(2);
-        return view('pacientes.index',$datos);
+        $generos=Generos::all();
+        return view('pacientes.index',$datos, compact('generos', $generos));
     }
 
     /**
@@ -31,7 +32,8 @@ class PacientesController extends Controller
     {
         //
         $generos = Generos::all();
-        return view('pacientes.create', compact('generos',$generos));
+        $paciente = new Pacientes();
+        return view('pacientes.create', compact("paciente",$paciente,'generos',$generos));
     }
 
     /**
@@ -67,10 +69,25 @@ class PacientesController extends Controller
 
 
         //$datosDoctors = request()->all();
-        $datosPacientes = request()->except('_token');
+        //$datosPacientes = request()->except('_token');
+        $paciente = new Pacientes();
 
+        $paciente->NombrePaciente = $request->NombrePaciente ;
+        $paciente->TipoidPaciente = $request->TipoidPaciente ;
+        $paciente->NumeroidPaciente = $request->NumeroidPaciente ;
+        $paciente->EdadPaciente = $request->EdadPaciente ;
+        $paciente->NombreAcudiente = $request->NombreAcudiente ;
+        $paciente->DireccionPaciente = $request->DireccionPaciente ;
+        $paciente->TelefonoPaciente = $request->TelefonoPaciente ;
+        $paciente->FechaNacimiento =$request->FechaNacimiento;
+        $paciente->EmailPaciente = $request->EmailPaciente ;
 
-        Pacientes::insert($datosPacientes);
+        echo "Este es genero ". $request->genero;
+        $onj =$request->genero;
+        
+        $paciente->generos_id =  $request->genero;
+        $paciente->saveOrFail();
+       // Pacientes::insert($datosPacientes);
 
         // return response()->json($datosDoctors);
         return redirect('pacientes')->with('mensaje','Paciente agregado con exito');
@@ -97,9 +114,10 @@ class PacientesController extends Controller
     {
         //
         $pacientes=Pacientes::findOrFail($id);
-        return view('pacientes.edit', compact('pacientes'));
-        $generos=Generos::all();
-        return view('pacientes.edit', compact('generos', $generos));
+        //return view('pacientes.edit', compact('pacientes'));
+        $generos= Generos::all();
+        return view('pacientes.edit')->with('paciente',$pacientes)
+        ->with('generos', $generos);
     }
 
     /**
@@ -135,14 +153,34 @@ class PacientesController extends Controller
     $this->validate($request, $campos,$mensaje);
 
 
+    
          //
          $datosPacientes = request()->except(['_token','_method']);
 
-         Pacientes::where('id','=',$id)->update($datosPacientes);
-         $pacientes=Pacientes::findOrFail($id);
+       //  Pacientes::where('id','=',$id)->update($datosPacientes);
+         $paciente=Pacientes::findOrFail($id);
         //return view('doctors.edit', compact('doctors') );
 
-        return redirect('pacientes')->with('mensaje','Se han modificado los datos');
+
+        $paciente->NombrePaciente = $request->NombrePaciente ;
+        $paciente->TipoidPaciente = $request->TipoidPaciente ;
+        $paciente->NumeroidPaciente = $request->NumeroidPaciente ;
+        $paciente->EdadPaciente = $request->EdadPaciente ;
+        $paciente->NombreAcudiente = $request->NombreAcudiente ;
+        $paciente->DireccionPaciente = $request->DireccionPaciente ;
+        $paciente->TelefonoPaciente = $request->TelefonoPaciente ;
+        $paciente->FechaNacimiento =$request->FechaNacimiento;
+        $paciente->EmailPaciente = $request->EmailPaciente ;
+
+        echo "Este es genero ". $request->genero;
+        $onj =$request->genero;
+        
+        $paciente->generos_id =  $request->genero;
+
+        $paciente->update();
+
+
+       return redirect('pacientes')->with('mensaje','Se han modificado los datos');
 
     }
 
