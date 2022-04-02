@@ -23,9 +23,14 @@
     <thead class="thead-light">
         <tr>
             <th>Código</th>
+            <th>Doctores</th>
+            <th>Especialidad Doctor</th>
+            <th>Paciente</th>
             <th>Consultorio</th>
-            <th>Hora Y Fecha Cita Medica</th>
+            <th>Fecha Cita Medica</th>
+            <th>Hora Cita Medica</th>
             <th>Acciones</th>
+
         </tr>
     </thead>
 
@@ -34,9 +39,21 @@
         <tr>
             <td>{{ $agendamiento_de_cita->id }}</td>
 
-            <td>{{ $agendamiento_de_cita->SaladeConsulta }}</td>
+            <td>
+                {{ $agendamiento_de_cita->doctor->Nombredoctor }}
+            </td>
+
+            <td>
+                {{ $agendamiento_de_cita->doctor->Especialidad }}
+            </td>
+
+            <td>{{ $agendamiento_de_cita->pacientes->Nombrepaciente }}</td>
+
+            <!--<td>{{ $agendamiento_de_cita->pacientes->Consultorio }}</td> --> 
 
             <td>{{ $agendamiento_de_cita->HorayFecha }}</td>
+
+            <td>{{ $agendamiento_de_cita->Hora_cita}}</td>
 
             <td>
 
@@ -62,7 +79,7 @@
 @stop
 
 @section('content')
-    <p>Welcome to this beautiful admin panel.</p>
+    <p></p>
 @stop
 
 @section('css')

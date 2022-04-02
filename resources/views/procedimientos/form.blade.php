@@ -23,20 +23,22 @@
 value="{{ isset( $procedimientos->FechaProcedimiento)?$procedimientos->FechaProcedimiento:old('FechaProcedimiento')}}" id="FechaProcedimiento" >
 <br>
 </div>
+<div>
+<select name="paciente" class="form-control" aria-label=".form-select-sm example">
+  <option selected>--Seleccione un paciente--</option>
+  @foreach ($pacientes as $paciente)
+        <option value="{{$paciente->id}}" @if($procedimientos->paciente !=null && $procedimientos->paciente->id == $paciente->id ) selected @endif>{{ $paciente->Nombrepaciente }}</option>
+ @endforeach   
+</select>
+</div>
 
 <div>
-
 <label for="DescripcionProcedimiento"> Descripcion del procedimiento </label>
 <input type="text" class="form-control" name="DescripcionProcedimiento" 
 value="{{ isset( $procedimientos->DescripcionProcedimiento)?$procedimientos->DescripcionProcedimiento:old('DescripcionProcedimiento')}}" id="DescripcionProcedimiento" >
 <br>
 </div>
 
-<label for="RadiografiaProcedimiento"> imagen </label>
-@if(isset($procedimientos->RadiografiaProcedimiento))
-<img class= "img-thumbnail img-fluid" src="{{ asset('storage').'/'.$procedimientos->RadiografiaProcedimiento }}" width="80" alt="">
-@endif
-<input type="file" class="form-control" name="RadiografiaProcedimiento" value="" id="RadiografiaProcedimiento" >
 <br>
 <input class="btn btn-success" type="submit" value="{{ $modo }} datos" >
 

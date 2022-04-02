@@ -26,9 +26,9 @@
         <tr>
             <th>Registro</th>
             <th>Fecha de creacion</th>
-            <th>Drescripcion Del Procedimiento</th> 
-            <th>Radiografia</th>          
-            <th>Acciones</th>
+            <th>Nombre Del Paciente</th>
+            <th>Drescripcion Del Procedimiento</th>          
+            
         </tr>
     </thead>
 
@@ -37,32 +37,17 @@
         <tr>
             <td>{{ $procedimiento->id }}</td>
 
-            <td>{{ $procedimiento->FechaProcedimiento }}</td>            
+            <td>{{ $procedimiento->FechaProcedimiento }}</td>     
+            <td> {{ $procedimiento->pacientes->Nombrepaciente}}</td>       
             <td>{{ $procedimiento->DescripcionProcedimiento }}</td>
 
-            <td>
-            <img  class= "img-thumbnail img-fluid" src="{{ asset('storage').'/'.$procedimiento->RadiografiaProcedimiento }}" width="80" alt="">           
-            </td>
-            <td>
 
-            <a href="{{ url('/procedimientos/'.$procedimiento->id.'/edit') }}" class="btn btn-warning">
-                    Editar            
-            </a>            
-             | 
-               
-            <form action="{{ url('/procedimientos/'.$procedimiento->id ) }}" class="d-inline" method="post">
-            @csrf 
-             {{ method_field('DELETE') }}
-
-            <input class="btn btn-danger" type="submit" onclick="return confirm('¿ Esta seguro de Borrar el registro ?')"
-             value="Borrar">
-            
-        </form>
         </tr>
         @endforeach
                 
     </tbody>
 </table>
+<a class="btn btn-primary" href="{{ url('historias_clinicas/') }}">Regresar</a>
  {{$procedimientos->links()}} 
 </div>
 @endsection

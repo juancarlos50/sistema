@@ -7,5 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class historias_clinicas extends Model
 {
-    use HasFactory;
+    public function Pacientes(){
+        return $this->hasOne("App\Models\Pacientes", 'id', 'pacientes_id');
+    }
 }

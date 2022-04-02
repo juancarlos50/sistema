@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\procedimientos;
 use App\Http\Controllers\Controller;
+use App\Models\Pacientes;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -18,7 +19,8 @@ class ProcedimientosController extends Controller
     {
         //
         $datos['procedimientos']=procedimientos::paginate(2);
-        return view('procedimientos.index',$datos);
+        $pacientes = Pacientes::all();
+        return view('procedimientos.index',$datos, compact('pacientes', $pacientes));
     }
 
     /**
@@ -28,8 +30,9 @@ class ProcedimientosController extends Controller
      */
     public function create()
     {
-        //
-        return view("procedimientos.create");
+        $pacientes = Pacientes::all();
+        $procedimientos = new procedimientos();
+        return view("procedimientos.create", compact('procedimientos', $procedimientos, 'pacientes', $pacientes));
     }
 
     /**
@@ -54,10 +57,16 @@ class ProcedimientosController extends Controller
          $this->validate($request, $campos,$mensaje);
 
 
-        $datosprocedimientos = request()->except('_token');
+        //$datosprocedimientos = request()->except('_token');
+        //procedimientos::insert($datosprocedimientos);
 
-       
-        procedimientos::insert($datosprocedimientos);
+        $procedimientos = new procedimientos();
+
+        $procedimientos-> FechaProcedimiento =$request->FechaProcedimiento;
+        $procedimientos-> pacientes_id =$request-> paciente;
+        $procedimientos-> DescripcionProcedimiento =$request->DescripcionProcedimiento;
+        $procedimientos->saveOrFail();
+
         return redirect('historias_clinicas')->with('mensaje','Procedimiento creado con exito ');
        
     }
@@ -83,7 +92,8 @@ class ProcedimientosController extends Controller
     {
         //
         $procedimientos=procedimientos::findOrFail($id);
-        return view('procedimientos.edit', compact('procedimientos') );
+        $pacientes =Pacientes::all();
+        return view('procedimientos.edit')->with('procedimientos', $procedimientos,)->with('pacientes', $pacientes);
     }
 
     /**
@@ -106,29 +116,20 @@ class ProcedimientosController extends Controller
 
         ];
 
-    if($request->hasFile('RadiografiaProcedimiento')){
-        $campos=['RadiografiaProcedimiento'=>'required|max:10000|mimes:jpeg,png,jpg'];
-        $mensaje=['RadiografiaProcedimiento.required'=>'La Imagen es Requerida'];        
-    }
+    
 
-    $this->validate($request, $campos,$mensaje);  
+        $this->validate($request, $campos,$mensaje);  
 
 
         //
-        $datosprocedimientos = request()->except(['_token','_method']);
+        //$datosprocedimientos = request()->except(['_token','_method']);
+        //procedimientos::where('id','=',$id)->update($datosprocedimientos);
 
-        if($request->hasFile('RadiografiaProcedimiento')){
-            $procedimientos=procedimientos::findOrFail($id);
-
-            Storage::delete('public/'.$procedimientos->RadiografiaProcedimiento);
-
-            $datosprocedimientos['RadiografiaProcedimiento']=$request->file('RadiografiaProcedimiento')->store('uploads','public');
-        }
-        
-
-
-        procedimientos::where('id','=',$id)->update($datosprocedimientos);
-        $procedimientos=procedimientos::findOrFail($id);
+        $procedimientos->FechaProcedimiento =$request->FechaProcedimiento;
+        $procedimientos->pacientes_id =$request-> paciente;
+        $procedimientos->DescripcionProcedimiento =$request->DescripcionProcedimiento;
+        $procedimientos->update();
+        $procedimientos= procedimientos::findOrFail($id);
         return redirect('historias_clinicas')->with('mensaje','Se han Modificado los datos');
         
     }

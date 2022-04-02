@@ -28,12 +28,15 @@ value="{{ isset( $doctors->NombreDoctor)?$doctors->NombreDoctor:old('NombreDocto
 
 <div> 
 
-<label for="TipoidDoctor"> Tipo id Doctor </label>
-<input type="text" class="form-control" name="TipoidDoctor" 
-value="{{ isset( $doctors->TipoidDoctor)?$doctors->TipoidDoctor:old('TipoidDoctor') }}" id="TipoidDoctor" >
-<br>
+<label for="TipoidDoctor"> Tipo de Documento </label>
+<select class="form-control " name="TipoidDoctor" aria-label=".form-select-sm example">
+  <option selected>Seleccione Tipo de Documento</option>
+  <option value="0">Cedula Ciudadania</option>
+  <option value="1">Tarjeta Identidad</option>
+  <option value="2">Cedula Extranjeria</option>
+</select>
 </div>
-
+<br>
 <label for="NumeroidDoctor"> Numero id Doctor </label>
 <input type="text" class="form-control" name="NumeroidDoctor" 
 value="{{ isset( $doctors->NumeroidDoctor)?$doctors->NumeroidDoctor:old('NumeroidDoctor')}}" id="NumeroidDoctor" >
@@ -55,6 +58,10 @@ value="{{ isset( $doctors->EmailDoctor)?$doctors->EmailDoctor:old('EmailDoctor')
 <img class= "img-thumbnail img-fluid" src="{{ asset('storage').'/'.$doctors->ImagenDoctor }}" width="80" alt="">
 @endif
 <input type="file" class="form-control" name="ImagenDoctor" value="" id="ImagenDoctor" >
+<br>
+<label for="Especialidad"> Especialidad </label>
+<input type="text" class="form-control" name="Especialidad" 
+value="{{ isset( $doctors->Especialidad)?$doctors->Especialidad:old('Especialidad')}}" id="Especialidad" >
 <br>
 
 <input class="btn btn-success" type="submit" value="{{ $modo }} datos" >

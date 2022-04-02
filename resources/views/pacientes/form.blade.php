@@ -27,10 +27,13 @@ value="{{ isset( $paciente->NombrePaciente)?$paciente->NombrePaciente:old('Nombr
 </div>
 
 <div> 
-
-<label for="TipoidPaciente"> Tipo id Paciente </label>
-<input type="text" class="form-control" name="TipoidPaciente" 
-value="{{ isset( $paciente->TipoidPaciente)?$paciente->TipoidPaciente:old('TipoidPaciente') }}" id="TipoidPaciente" >
+<label for="TipoidPaciente"> Tipo de Documento </label>
+<select class="form-control " name="TipoidPaciente" aria-label=".form-select-sm example">
+  <option selected>Seleccione Tipo de Documento</option>
+  <option value="0">Cedula Ciudadania</option>
+  <option value="1">Tarjeta Identidad</option>
+  <option value="2">Cedula Extranjeria</option>
+</select>
 <br>
 </div>
 
@@ -50,13 +53,21 @@ value="{{ isset( $paciente->NombreAcudiente)?$paciente->NombreAcudiente:old('Nom
 <input type="text" class="form-control" name="DireccionPaciente" 
 value="{{ isset( $paciente->DireccionPaciente)?$paciente->DireccionPaciente:old('DireccionPaciente')}}" id="DireccionPaciente" >
 <br>
-<label for="TelefonoPaciente"> Telefono Paciente </label>
+<label for="TelefonoPaciente"> Telefono  </label>
 <input type="text" class="form-control" name="TelefonoPaciente" 
 value="{{ isset( $paciente->TelefonoPaciente)?$paciente->TelefonoPaciente:old('TelefonoPaciente')}}" id="TelefonoPaciente" >
 <br>
+<select name="eps" class="form-control" aria-label=".form-select-sm example">
+  <option selected>--Seleccione un eps--</option>
+  @foreach ($saluds as $salud)
+        <option value="{{$salud->id}}" @if($paciente->salud !=null && $paciente->salud->id == $salud->id ) selected @endif>{{ $salud->Nombreeps }}</option>
+ @endforeach   
+</select>
+<br>
 <label for="FechaNacimiento"> Fecha de Nacimiento </label>
-<input type="date" class="form-control" name="FechaNacimiento" 
+<input type="date" class="form-control-little" name="FechaNacimiento" 
 value="{{ isset( $paciente->FechaNacimiento)?$paciente->FechaNacimiento:old('FechaNacimiento')}}" id="FechaNacimiento" >
+<br>
 <br>
 <label for="EmailPaciente"> Email Paciente </label>
 <input type="text" class="form-control" name="EmailPaciente" 
@@ -65,7 +76,7 @@ value="{{ isset( $paciente->EmailPaciente)?$paciente->EmailPaciente:old('EmailPa
 
 <label for="genero"> Genero:   </label>
 <br>
-<select name="genero" class="form-select form-select-sm" aria-label=".form-select-sm example">
+<select name="genero" class="form-control" aria-label=".form-select-sm example">
   <option selected>--Seleccione un genero--</option>
   @foreach ($generos as $genero)
         <option value="{{$genero->id}}" @if($paciente->genero !=null && $paciente->genero->id == $genero->id ) selected @endif>{{ $genero->NombreGenero }}</option>

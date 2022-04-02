@@ -18,6 +18,9 @@
 
 
 <a href="{{ url('historias_clinicas/create') }}"  class="btn btn-success" >Crear Historia Clinica</a>
+|
+|
+<a href="{{ url('procedimientos') }}" class="btn btn-primary ">Procedimientos </a>
 <br>
 <br>
 <table class="table table-light">
@@ -25,11 +28,12 @@
     <thead class="thead-light">
         <tr>
             <th>Código</th>
-            <th>RayosX</th>
+            <th>paciente</th> 
             <th>Antecedentes Medicos</th>
+            <th>Prescripcion Actual</th>
+            <th>RayosX</th>  
             <th>Fecha De Creacion</th>
-            <th>Prescripcion Actual</th> 
-            <th>Procedimientos</th>          
+                    
             <th>Acciones</th>
         </tr>
     </thead>
@@ -38,35 +42,25 @@
         @foreach( $historias_clinicas as $historia_clinica )
         <tr>
             <td>{{ $historia_clinica->id }}</td>
-
+            <td>{{ $historia_clinica->pacientes->Nombrepaciente }}</td>
+            <td>{{ $historia_clinica->AntecedentesMedicos }}</td>            
+            <td>{{ $historia_clinica->PrescripcionActual }}</td>
             <td>
             <img  class= "img-thumbnail img-fluid" src="{{ asset('storage').'/'.$historia_clinica->RayosX }}" width="80" alt="">           
             </td>
-
-
-            <td>{{ $historia_clinica->AntecedentesMedicos }}</td>            
             <td>{{ $historia_clinica->DatosDeCreacion }}</td>
-            <td>{{ $historia_clinica->PrescripcionActual }}</td>
-
-            <td>    
-            <a href="{{ url('procedimientos') }}"  class="btn btn-info">
-                    ver
-            </a>
-            </td>
             <td>
-             
             <a href="{{ url('/historias_clinicas/'.$historia_clinica->id.'/edit') }}" class="btn btn-warning">
                     editar
-            </a>            
-             |
+            </a>
             <form action="{{ url('/historias_clinicas/'.$historia_clinica->id ) }}" class="d-inline" method="post">
             @csrf 
              {{ method_field('DELETE') }}
 
             <input class="btn btn-danger" type="submit" onclick="return confirm('¿ Esta seguro de Borrar el registro ?')"
              value="Borrar">
-
             </form>
+            </td>
         </tr>
         @endforeach
                 

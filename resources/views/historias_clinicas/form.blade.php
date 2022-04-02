@@ -19,11 +19,18 @@
 
 
 <div> 
-
 <label for="AntecedentesMedicos"> Antecedentes Medicos </label>
 <input type="text" class="form-control" name="AntecedentesMedicos" 
 value="{{ isset( $historias_clinicas->AntecedentesMedicos)?$historias_clinicas->AntecedentesMedicos:old('AntecedentesMedicos')}}" id="AntecedentesMedicos" >
 <br>
+</div>
+<div>
+<select name="paciente" class="form-control" aria-label=".form-select-sm example">
+  <option selected>--Seleccione un paciente--</option>
+  @foreach ($pacientes as $paciente)
+        <option value="{{$paciente->id}}" @if($historias->paciente !=null && $historias->paciente->id == $paciente->id ) selected @endif>{{ $paciente->Nombrepaciente }}</option>
+ @endforeach   
+</select>
 </div>
 
 <label for="DatosDeCreacion"> Fecha De Creacion </label>

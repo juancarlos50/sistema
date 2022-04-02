@@ -10,5 +10,8 @@ class Pacientes extends Model
     public function genero(){
         return $this->hasOne("App\Models\Generos", 'id','generos_id');
     }
+    public function Eps(){
+        return $this->hasOne("App\Models\Eps", 'id', 'eps_id');
+    }
     use HasFactory;
 }

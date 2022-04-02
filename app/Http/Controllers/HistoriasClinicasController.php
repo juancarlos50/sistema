@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\historias_clinicas;
-use App\models\procedimientos;
 use App\Http\Controllers\Controller;
+use App\Models\Pacientes;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -20,7 +20,8 @@ class HistoriasClinicasController extends Controller
     {
         //
         $datos['historias_clinicas']=historias_clinicas::paginate(2);
-        return view('historias_clinicas.index',$datos);
+        $pacientes=Pacientes::all();
+        return view('historias_clinicas.index',$datos, compact('pacientes', $pacientes));
     }
 
     /**
@@ -31,7 +32,9 @@ class HistoriasClinicasController extends Controller
     public function create()
     {
         //
-        return view('historias_clinicas.create');
+        $pacientes=Pacientes::all();
+        $historias = new historias_clinicas();
+        return view('historias_clinicas.create', compact('historias', $historias, 'pacientes', $pacientes));
     }
 
     /**
@@ -58,9 +61,18 @@ class HistoriasClinicasController extends Controller
 
          $this->validate($request, $campos,$mensaje);
 
-        $datoshistorias_clinicas = request()->except('_token');
+         $historias = new historias_clinicas();
 
-        historias_clinicas::insert($datoshistorias_clinicas);
+         $historias->AntecedentesMedicos = $request->AntecedentesMedicos;
+         $historias->DatosDeCreacion = $request->DatosDeCreacion;
+         $historias->PrescripcionActual = $request->PrescripcionActual;
+         $historias->RayosX = $request->RayosX;
+         $historias->pacientes_id = $request->paciente;
+         $historias->saveOrFail();
+         
+         
+        //$datoshistorias_clinicas = request()->except('_token');
+        //historias_clinicas::insert($datoshistorias_clinicas);
 
         return redirect('historias_clinicas')->with('mensaje','Historia Clinica agregada con exito');
 
@@ -74,8 +86,9 @@ class HistoriasClinicasController extends Controller
      */
     public function show($id)
     {
-        $datovista = historias_clinicas::find($id);
-        return view('historias_clinicas.show' , compact('datovista'));
+        //pendiente para agregar una vista de los registros enhistorias clinicas
+        //$datovista = historias_clinicas::find($id);
+        //return view('historias_clinicas.show' , compact('datovista'));
     }
 
     /**
@@ -87,8 +100,9 @@ class HistoriasClinicasController extends Controller
     public function edit($id)
     {
         //
-        $historias_clinicas=historias_clinicas::findOrFail($id);
-        return view('historias_clinicas.edit', compact('historias_clinicas') );
+        $historias=historias_clinicas::findOrFail($id);
+        $pacientes=Pacientes::all();
+        return view('historias_clinicas.edit', compact('historias', $historias, 'pacientes', $pacientes) );
     }
 
     /**
@@ -123,7 +137,7 @@ class HistoriasClinicasController extends Controller
 
 
         //
-        $datoshistorias_clinicas = request()->except(['_token','_method']);
+        //$datoshistorias_clinicas = request()->except(['_token','_method']);
 
         if($request->hasFile('RayosX')){
             $historias_clinicas=historias_clinicas::findOrFail($id);
@@ -135,9 +149,16 @@ class HistoriasClinicasController extends Controller
         
 
 
-        historias_clinicas::where('id','=',$id)->update($datoshistorias_clinicas);
-        $historias_clinicas=historias_clinicas::findOrFail($id);
+        //historias_clinicas::where('id','=',$id)->update($datoshistorias_clinicas);
+        $historias=historias_clinicas::findOrFail($id);
         //return view('historias_clinicas.edit', compact('historias_clinicas') );
+
+         $historias->AntecedentesMedicos = $request->AntecedentesMedicos;
+         $historias->DatosDeCreacion = $request->DatosDeCreacion;
+         $historias->PrescripcionActual = $request->PrescripcionActual;
+         $historias->RayosX = $request->RayosX;
+         $historias->pacientes_id = $request->paciente;
+         $historias->update();
 
         return redirect('historias_clinicas')->with('mensaje','Se han Modificado los datos');
     }
@@ -152,10 +173,8 @@ class HistoriasClinicasController extends Controller
     {
         //
         $historias_clinicas=historias_clinicas::findOrFail($id);
-
-        if(Storage::delete('public/'.$historias_clinicas->RayosX)){
-            historias_clinicas::destroy($id);
-        }
+        historias_clinicas::destroy($id);
+        
 
        
 

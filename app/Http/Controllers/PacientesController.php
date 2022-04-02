@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Pacientes;
 use Illuminate\Http\Request;
 use App\Models\Generos;
-
+use App\Models\Eps;
 use Illuminate\Support\Facades\Storage;
 
 class PacientesController extends Controller
@@ -20,7 +20,8 @@ class PacientesController extends Controller
         //
         $datos['pacientes']=Pacientes::paginate(2);
         $generos=Generos::all();
-        return view('pacientes.index',$datos, compact('generos', $generos));
+        $saluds=Eps::all();
+        return view('pacientes.index',$datos, compact('generos', $generos, 'saluds', $saluds));
     }
 
     /**
@@ -33,7 +34,8 @@ class PacientesController extends Controller
         //
         $generos = Generos::all();
         $paciente = new Pacientes();
-        return view('pacientes.create', compact("paciente",$paciente,'generos',$generos));
+        $saluds=Eps::all();
+        return view('pacientes.create', compact("paciente",$paciente,'generos',$generos, 'saluds', $saluds));
     }
 
     /**
@@ -86,10 +88,10 @@ class PacientesController extends Controller
         $onj =$request->genero;
         
         $paciente->generos_id =  $request->genero;
+        $paciente->eps_id =$request->eps;
         $paciente->saveOrFail();
        // Pacientes::insert($datosPacientes);
 
-        // return response()->json($datosDoctors);
         return redirect('pacientes')->with('mensaje','Paciente agregado con exito');
     }
 
@@ -116,8 +118,9 @@ class PacientesController extends Controller
         $pacientes=Pacientes::findOrFail($id);
         //return view('pacientes.edit', compact('pacientes'));
         $generos= Generos::all();
+        $saluds = Eps::all();
         return view('pacientes.edit')->with('paciente',$pacientes)
-        ->with('generos', $generos);
+        ->with('generos', $generos, 'saluds', $saluds);
     }
 
     /**
@@ -176,7 +179,7 @@ class PacientesController extends Controller
         $onj =$request->genero;
         
         $paciente->generos_id =  $request->genero;
-
+        $paciente->eps_id =$request->eps;
         $paciente->update();
 
 

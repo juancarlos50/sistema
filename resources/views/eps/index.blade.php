@@ -39,7 +39,7 @@
 
             
 
-            <td>{{ $eps1->NombreEps }}</td>            
+            <td>{{ $eps1->Nombreeps }}</td>            
             <td>{{ $eps1->TipoAfiliado }}</td>
             
             <td>

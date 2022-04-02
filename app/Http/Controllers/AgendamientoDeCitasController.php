@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\agendamiento_de_citas;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Doctor;
+use App\Models\Pacientes;
 use Illuminate\Support\Facades\Storage;
 
 
@@ -19,7 +21,9 @@ class AgendamientoDeCitasController extends Controller
     {
         //
         $datos['agendamiento_de_citas']=agendamiento_de_citas::paginate(2);
-        return view('agendamiento_de_citas.index',$datos);
+        $doctors = Doctor::all();
+        $pacientes = Pacientes::all();
+        return view('agendamiento_de_citas.index',$datos, compact('doctors',$doctors,'pacientes', $pacientes));
     }
 
     /**
@@ -30,7 +34,10 @@ class AgendamientoDeCitasController extends Controller
     public function create()
     {
         //
-        return view('agendamiento_de_citas.create');
+        $doctors = Doctor::all();
+        $pacientes = Pacientes::all();
+        $agendamiento = new agendamiento_de_citas();
+        return view('agendamiento_de_citas.create', compact("agendamiento",$agendamiento, 'doctors',$doctors, 'pacientes', $pacientes));
     }
 
     /**
@@ -44,7 +51,7 @@ class AgendamientoDeCitasController extends Controller
         //
 
         $campos=[
-            'SalaDeConsulta'=>'required|string|max:100',
+            //'SalaDeConsulta'=>'required|string|max:100',
             'HoraYFecha'=>'required|date|',
           //  'especialidads_id'=>'required|string|max:100',
 
@@ -55,10 +62,27 @@ class AgendamientoDeCitasController extends Controller
 
         $this->validate($request, $campos,$mensaje);
 
-        $datosagendamiento_de_citas = request()->except('_token');
+        
+        //$datosagendamiento_de_citas = request()->except('_token');
+        //agendamiento_de_citas::insert($datosagendamiento_de_citas);
+        $agendamiento = new agendamiento_de_citas();
 
+        //$agendamiento->SalaDeConsulta = $request->SalaDeConsulta ;
+        $agendamiento->HoraYFecha = $request->HoraYFecha ;
+        $agendamiento->Hora_cita = $request->Hora_cita ;
+        
+        //echo "Este es doctor ". $request->doctor;
+        //$onj =$request->doctor;
+        echo "Este es paciente ". $request->paciente;
+        $onj =$request->paciente;
+        
+        $agendamiento->doctors_id = $request->doctor ;
+        $agendamiento->pacientes_id = $request->paciente ;
+        $agendamiento->saveOrFail();
+       
+       
+    
 
-        agendamiento_de_citas::insert($datosagendamiento_de_citas);
 
         return redirect('agendamiento_de_citas')->with('mensaje','Cita creada con éxito');
     }
@@ -83,8 +107,11 @@ class AgendamientoDeCitasController extends Controller
     public function edit($id)
     {
         //
-        $agendamiento_de_citas=agendamiento_de_citas::findOrFail($id);
-        return view('agendamiento_de_citas.edit', compact('agendamiento_de_citas') );
+        $agendamiento = agendamiento_de_citas::findOrFail($id);
+        $doctors = Doctor::all();
+        $pacientes = Pacientes::all();
+        return view('agendamiento_de_citas.edit')->with('agendamiento',$agendamiento) 
+        ->with('doctors',$doctors)->with('pacientes',$pacientes);
 
     }
 
@@ -100,7 +127,7 @@ class AgendamientoDeCitasController extends Controller
         //
 
         $campos=[
-            'SalaDeConsulta'=>'required|string|max:100',
+            //'SalaDeConsulta'=>'required|string|max:100',
             'HoraYFecha'=>'required|date',
          //   'especialidads_id'=>'required|string|max:100',
 
@@ -115,11 +142,17 @@ class AgendamientoDeCitasController extends Controller
 
 
         //
-        $datosagendamiento_de_citas = request()->except(['_token','_method']);
-
-        agendamiento_de_citas::where('id','=',$id)->update($datosagendamiento_de_citas);
-        $agendamiento_de_citas=agendamiento_de_citas::findOrFail($id);
+        //$datosagendamiento_de_citas = request()->except(['_token','_method']);
+        //agendamiento_de_citas::where('id','=',$id)->update($datosagendamiento_de_citas);
+        $agendamiento=agendamiento_de_citas::findOrFail($id);
         //return view('agendamiento_de_citas.edit', compact('agendamiento_de_citas') );
+
+        //$agendamiento->SalaDeConsulta = $request->SalaDeConsulta ;
+        $agendamiento->HoraYFecha = $request->HoraYFecha ;
+        $agendamiento->Hora_cita = $request->Hora_cita ;
+        $agendamiento->doctors_id = $request->doctor ;
+        $agendamiento->pacientes_id = $request->paciente ;
+        $agendamiento->update();
 
         return redirect('agendamiento_de_citas')->with('mensaje','Se han modificado los datos');
     }

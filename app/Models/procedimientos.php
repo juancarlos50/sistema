@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class procedimientos extends Model
 {
     use HasFactory;
+    public function Pacientes(){
+        return $this->hasOne("App\Models\Pacientes", 'id', 'pacientes_id');
+    }
 }

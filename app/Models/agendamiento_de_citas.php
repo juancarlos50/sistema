@@ -7,8 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class agendamiento_de_citas extends Model
 {
-    public function especialidad(){
-        return $this->belongsTo(Especialidad::class);
+    public function Doctor(){
+        return $this->hasOne("App\Models\Doctor",'id','doctors_id', );
     }
     use HasFactory;
+    public function Pacientes(){
+        return $this->hasOne("App\Models\Pacientes", 'id', 'pacientes_id');
+    }
 }
