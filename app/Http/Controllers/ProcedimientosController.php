@@ -6,6 +6,7 @@ use App\Models\procedimientos;
 use App\Http\Controllers\Controller;
 use App\Models\Pacientes;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class ProcedimientosController extends Controller
@@ -15,12 +16,16 @@ class ProcedimientosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
-        $datos['procedimientos']=procedimientos::paginate(2);
+        $texto=trim($request->get('texto'));
+        $datos['procedimientos']=procedimientos::paginate(5);
+        // $procedimientos=DB::table('procedimientos')
+        //     ->select('id', 'FechaProcedimiento','pacientes_id->Nombrepaciente','DescripcionProcedimiento', 'created_at' )
+        //     ->where('pacientes_id->Nombrepaciente', 'LIKE', '%'.$texto.'%')
+        //     ->paginate(2);
         $pacientes = Pacientes::all();
-        return view('procedimientos.index',$datos, compact('pacientes', $pacientes));
+        return view('procedimientos.index',$datos,  compact('datos', 'pacientes', $pacientes));
     }
 
     /**

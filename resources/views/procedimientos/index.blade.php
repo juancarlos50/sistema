@@ -17,8 +17,7 @@
 
 
 
-<a href="{{ url('procedimientos/create') }}"  class="btn btn-success" >Crear Procedimiento</a>
-<br>
+<a href="{{ url('procedimientos/create') }}"  class="btn btn-success my-3" >Crear Procedimiento</a>
 <br>
 <table class="table table-light">
 
@@ -47,7 +46,9 @@
                 
     </tbody>
 </table>
-<a class="btn btn-primary" href="{{ url('historias_clinicas/') }}">Regresar</a>
+<br>
  {{$procedimientos->links()}} 
+ <a class="btn btn-primary" href="{{ url('historias_clinicas/') }}">Regresar</a>
+
 </div>
 @endsection

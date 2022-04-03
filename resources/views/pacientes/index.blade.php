@@ -81,7 +81,6 @@
             @endforeach
         
         </tbody>
-        <a class="btn btn-primary" href="{{ url('historias_clinicas/') }}">Regresar</a>
     </table>
     {{$pacientes->links()}}
 </div>
