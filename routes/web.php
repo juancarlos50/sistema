@@ -45,6 +45,9 @@ Auth::routes();
 
 Route::get('/home', [DoctorController::class, 'index'])->name('home');
 
+Route::post('/procedimientos/search', [ProcedimientosController::class, 'search'])->name('procedimientos.search');
+
+
 Route::get('/home', [EspecialidadController::class, 'index'])->name('home');
 
 Route::get('/home', [EpsController::class, 'index'])->name('home');

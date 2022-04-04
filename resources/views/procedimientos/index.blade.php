@@ -22,7 +22,19 @@
 @endif
 
 
+<div class="row">
+<div class="col-sm">
+    <form action="{{ url('procedimientos/search') }}" method="post">
+        @csrf
+        <div>
+            <label for="texto"> Buscardor</label>
+            <input type="text" name="texto" id="texto">
+            <input type="submit" value="Buscar">
+        </div>
+    </form>
+</div>
 
+</div>
 
 <a href="{{ url('procedimientos/create') }}"  class="btn btn-success my-3" >Crear Procedimiento</a>
 <br>
