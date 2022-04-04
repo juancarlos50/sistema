@@ -1,4 +1,11 @@
-@extends('layouts.app')
+@extends('adminlte::page')
+
+@section('title', 'Procedimientos medicos')
+
+@section('content_header')
+<img class="logotipo-barra" src="http://proyectomedicalbases.herokuapp.com/imagenes/isologo_para_barra.png" style="width: 200px; height: 70px;" b="" alt="logotipo">
+
+@stop
 
 @section('content')
 <div class="container">
@@ -26,6 +33,7 @@
             <th>Registro</th>
             <th>Fecha de creacion</th>
             <th>Nombre Del Paciente</th>
+            <th>Doctor Encargado</th>
             <th>Drescripcion Del Procedimiento</th>          
             
         </tr>
@@ -35,9 +43,9 @@
         @foreach( $procedimientos as $procedimiento )
         <tr>
             <td>{{ $procedimiento->id }}</td>
-
             <td>{{ $procedimiento->FechaProcedimiento }}</td>     
-            <td> {{ $procedimiento->pacientes->Nombrepaciente}}</td>       
+            <td>{{ $procedimiento->pacientes->Nombrepaciente}}</td> 
+            <td>{{ $procedimiento->doctor_Nombredoctor}}</td> 
             <td>{{ $procedimiento->DescripcionProcedimiento }}</td>
 
 
@@ -51,4 +59,12 @@
  <a class="btn btn-primary" href="{{ url('historias_clinicas/') }}">Regresar</a>
 
 </div>
-@endsection
+@stop
+
+@section('css')
+    <link rel="stylesheet" href="/css/admin_custom.css">
+@stop
+
+@section('js')
+    <script> console.log('Hi!'); </script>
+@stop

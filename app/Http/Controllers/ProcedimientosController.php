@@ -6,6 +6,7 @@ use App\Models\procedimientos;
 use App\Http\Controllers\Controller;
 use App\Models\Pacientes;
 use Illuminate\Http\Request;
+use App\Models\Doctor;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
@@ -18,14 +19,15 @@ class ProcedimientosController extends Controller
      */
     public function index(Request $request)
     {
-        $texto=trim($request->get('texto'));
+        // $texto=trim($request->get('texto'));
         $datos['procedimientos']=procedimientos::paginate(5);
         // $procedimientos=DB::table('procedimientos')
         //     ->select('id', 'FechaProcedimiento','pacientes_id->Nombrepaciente','DescripcionProcedimiento', 'created_at' )
         //     ->where('pacientes_id->Nombrepaciente', 'LIKE', '%'.$texto.'%')
         //     ->paginate(2);
         $pacientes = Pacientes::all();
-        return view('procedimientos.index',$datos,  compact('datos', 'pacientes', $pacientes));
+        $doctors = Doctor::all();
+        return view('procedimientos.index',$datos,  compact('datos', 'pacientes', $pacientes, 'doctors', $doctors));
     }
 
     /**
@@ -36,8 +38,9 @@ class ProcedimientosController extends Controller
     public function create()
     {
         $pacientes = Pacientes::all();
+        $doctors = Doctor::all();
         $procedimientos = new procedimientos();
-        return view("procedimientos.create", compact('procedimientos', $procedimientos, 'pacientes', $pacientes));
+        return view("procedimientos.create", compact('procedimientos', $procedimientos, 'pacientes', $pacientes, 'doctors', $doctors));
     }
 
     /**
@@ -69,6 +72,7 @@ class ProcedimientosController extends Controller
 
         $procedimientos-> FechaProcedimiento =$request->FechaProcedimiento;
         $procedimientos-> pacientes_id =$request-> paciente;
+        $procedimientos-> doctors_id = $request->doctor;
         $procedimientos-> DescripcionProcedimiento =$request->DescripcionProcedimiento;
         $procedimientos->saveOrFail();
 
@@ -98,7 +102,8 @@ class ProcedimientosController extends Controller
         //
         $procedimientos=procedimientos::findOrFail($id);
         $pacientes =Pacientes::all();
-        return view('procedimientos.edit')->with('procedimientos', $procedimientos,)->with('pacientes', $pacientes);
+        $doctors = Doctor::all();
+        return view('procedimientos.edit')->with('procedimientos', $procedimientos)->with('pacientes', $pacientes)->with('doctors', $doctors);
     }
 
     /**
@@ -132,6 +137,7 @@ class ProcedimientosController extends Controller
 
         $procedimientos->FechaProcedimiento =$request->FechaProcedimiento;
         $procedimientos->pacientes_id =$request-> paciente;
+        $procedimientos-> doctors_id = $request->doctor;
         $procedimientos->DescripcionProcedimiento =$request->DescripcionProcedimiento;
         $procedimientos->update();
         $procedimientos= procedimientos::findOrFail($id);

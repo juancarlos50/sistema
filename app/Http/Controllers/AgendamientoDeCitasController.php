@@ -20,7 +20,7 @@ class AgendamientoDeCitasController extends Controller
     public function index()
     {
         //
-        $datos['agendamiento_de_citas']=agendamiento_de_citas::paginate(2);
+        $datos['agendamiento_de_citas']=agendamiento_de_citas::paginate(5);
         $doctors = Doctor::all();
         $pacientes = Pacientes::all();
         return view('agendamiento_de_citas.index',$datos, compact('doctors',$doctors,'pacientes', $pacientes));
@@ -70,11 +70,12 @@ class AgendamientoDeCitasController extends Controller
         //$agendamiento->SalaDeConsulta = $request->SalaDeConsulta ;
         $agendamiento->HoraYFecha = $request->HoraYFecha ;
         $agendamiento->Hora_cita = $request->Hora_cita ;
+        $agendamiento->consultorio = $request->consultorio ;
         
         //echo "Este es doctor ". $request->doctor;
         //$onj =$request->doctor;
-        echo "Este es paciente ". $request->paciente;
-        $onj =$request->paciente;
+        // echo "Este es paciente ". $request->paciente;
+        // $onj =$request->paciente;
         
         $agendamiento->doctors_id = $request->doctor ;
         $agendamiento->pacientes_id = $request->paciente ;
@@ -150,6 +151,7 @@ class AgendamientoDeCitasController extends Controller
         //$agendamiento->SalaDeConsulta = $request->SalaDeConsulta ;
         $agendamiento->HoraYFecha = $request->HoraYFecha ;
         $agendamiento->Hora_cita = $request->Hora_cita ;
+        $agendamiento->consultorio = $request->consultorio ;
         $agendamiento->doctors_id = $request->doctor ;
         $agendamiento->pacientes_id = $request->paciente ;
         $agendamiento->update();

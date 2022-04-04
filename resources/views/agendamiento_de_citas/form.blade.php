@@ -48,7 +48,7 @@ value="{{ isset( $agendamiento_de_citas->Hora_cita)?$agendamiento_de_citas->Hora
 </div>
 
 <div>
-<label for="paciente">  </label>
+<label for="paciente"> Paciente </label>
 <br>
 <select name="paciente" class="form-control" aria-label=".form-select-sm example">
   <option selected>--Seleccione un paciente--</option>
@@ -58,7 +58,15 @@ value="{{ isset( $agendamiento_de_citas->Hora_cita)?$agendamiento_de_citas->Hora
 </select>
 <br>  
 </div>
-
+<div> 
+<label for="consultorio"> Consultorio Medico </label>
+<select class="form-control" name="consultorio" aria-label=".form-select-sm example">
+  <option selected>Seleccione el consultorio</option>
+  <option value="0">201</option>
+  <option value="1">202</option>  
+</select>
+</div>
+<br>
 
 <input class="btn btn-success" type="submit" value="{{ $modo }} datos" >
 

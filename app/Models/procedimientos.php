@@ -11,4 +11,7 @@ class procedimientos extends Model
     public function Pacientes(){
         return $this->hasOne("App\Models\Pacientes", 'id', 'pacientes_id');
     }
+    public function Doctor(){
+        return $this->hasOne("App\Models\Doctor",'id','doctors_id', );
+    }
 }

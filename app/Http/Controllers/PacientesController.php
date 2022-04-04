@@ -18,10 +18,10 @@ class PacientesController extends Controller
     public function index()
     {
         //
-        $datos['pacientes']=Pacientes::paginate(2);
+        $datos['pacientes']=Pacientes::paginate(5);
         $generos=Generos::all();
-        $saluds=Eps::all();
-        return view('pacientes.index',$datos, compact('generos', $generos, 'saluds', $saluds));
+        $epss=Eps::all();
+        return view('pacientes.index',$datos, compact('generos', $generos, 'epss', $epss));
     }
 
     /**
@@ -34,8 +34,8 @@ class PacientesController extends Controller
         //
         $generos = Generos::all();
         $paciente = new Pacientes();
-        $saluds=Eps::all();
-        return view('pacientes.create', compact("paciente",$paciente,'generos',$generos, 'saluds', $saluds));
+        $epss=Eps::all();
+        return view('pacientes.create', compact("paciente",$paciente,'generos',$generos, 'epss', $epss));
     }
 
     /**
@@ -84,8 +84,8 @@ class PacientesController extends Controller
         $paciente->FechaNacimiento =$request->FechaNacimiento;
         $paciente->EmailPaciente = $request->EmailPaciente ;
 
-        echo "Este es genero ". $request->genero;
-        $onj =$request->genero;
+        // echo "Este es genero ". $request->genero;
+        // $onj =$request->genero;
         
         $paciente->generos_id =  $request->genero;
         $paciente->eps_id =$request->eps;
@@ -116,11 +116,10 @@ class PacientesController extends Controller
     {
         //
         $pacientes=Pacientes::findOrFail($id);
-        //return view('pacientes.edit', compact('pacientes'));
         $generos= Generos::all();
-        $saluds = Eps::all();
+        $epss = Eps::all();
         return view('pacientes.edit')->with('paciente',$pacientes)
-        ->with('generos', $generos, 'saluds', $saluds);
+        ->with('generos', $generos)->with('epss', $epss);
     }
 
     /**

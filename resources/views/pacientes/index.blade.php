@@ -3,6 +3,10 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
+<img class="logotipo-barra" src="http://proyectomedicalbases.herokuapp.com/imagenes/isologo_para_barra.png" style="width: 200px; height: 70px;" b="" alt="logotipo">
+<br>
+@stop
+@section('content')
 <div class="container">
 @if(Session::has('mensaje'))
     <div class="alert alert-success alert-dismissible" role="alert">
@@ -24,7 +28,7 @@
 
         <thead class="thead-light">
             <tr>
-                <th>Código</th>
+                
                 <th>Nombres y apellidos</th>
                 <th>Tipo de Documento</th>
                 <th>Numero Documento</th>
@@ -43,8 +47,6 @@
         <tbody>
             @foreach( $pacientes as $paciente )
             <tr>
-                <td>{{ $paciente->id }}</td>
-
                 <td>{{ $paciente->Nombrepaciente }}</td>
                 <td>
                     @if ($paciente->TipoidPaciente == 0)
@@ -84,9 +86,6 @@
     </table>
     {{$pacientes->links()}}
 </div>
-@stop
-@section('content')
-    <p>Modulo de pacientes: bienvenidos</p>
 @stop
 
 @section('css')

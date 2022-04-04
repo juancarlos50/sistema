@@ -1,8 +1,13 @@
 @extends('adminlte::page')
 
-@section('title', 'Dashboard')
+@section('title', 'Agendamiento de citas')
 
 @section('content_header')
+<img class="logotipo-barra" src="http://proyectomedicalbases.herokuapp.com/imagenes/isologo_para_barra.png" style="width: 200px; height: 70px;" b="" alt="logotipo">
+
+@stop
+
+@section('content')
 <div class="container">
 
 
@@ -49,7 +54,13 @@
 
             <td>{{ $agendamiento_de_cita->pacientes->Nombrepaciente }}</td>
 
-            <!--<td>{{ $agendamiento_de_cita->pacientes->Consultorio }}</td> --> 
+            <td> 
+                @if ($agendamiento_de_cita->consultorio == 0)
+                    201
+                @else
+                    202
+                @endif                  
+            </td> 
 
             <td>{{ $agendamiento_de_cita->HorayFecha }}</td>
 
@@ -76,10 +87,6 @@
 </table>
  {{$agendamiento_de_citas->links()}}
 </div>
-@stop
-
-@section('content')
-    <p></p>
 @stop
 
 @section('css')

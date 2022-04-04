@@ -31,7 +31,17 @@ value="{{ isset( $procedimientos->FechaProcedimiento)?$procedimientos->FechaProc
  @endforeach   
 </select>
 </div>
-
+<div>
+<label for="doctor"> Doctores </label>
+<br>
+<select name="doctor" class="form-control" aria-label=".form-select-sm example">
+  <option selected>--Seleccione un doctor--</option>
+  @foreach ($doctors as $doctor)
+        <option value="{{$doctor->id}}" @if($procedimientos->doctor !=null && $procedimientos->doctor->id == $doctor->id ) selected @endif>{{ $doctor->Nombredoctor }}</option>
+ @endforeach   
+</select>
+<br>  
+</div>
 <div>
 <label for="DescripcionProcedimiento"> Descripcion del procedimiento </label>
 <input type="text" class="form-control" name="DescripcionProcedimiento" 
