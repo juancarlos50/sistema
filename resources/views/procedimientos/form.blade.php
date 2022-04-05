@@ -21,9 +21,9 @@
 <label for="FechaProcedimiento"> Fecha Del procedimiento </label>
 <input type="date" class="form-control" name="FechaProcedimiento" 
 value="{{ isset( $procedimientos->FechaProcedimiento)?$procedimientos->FechaProcedimiento:old('FechaProcedimiento')}}" id="FechaProcedimiento" >
-<br>
 </div>
 <div>
+<label for="paciente"> Paciente </label>
 <select name="paciente" class="form-control" aria-label=".form-select-sm example">
   <option selected>--Seleccione un paciente--</option>
   @foreach ($pacientes as $paciente)

@@ -26,30 +26,30 @@
                  <img class="logotipo-barra" src="http://proyectomedicalbases.herokuapp.com/imagenes/isologo_para_barra.png" style="width: 200px; height: 70px;" b="" alt="logotipo">
 
 
-                <nav class="navbar navbar-dark bg-primary" id="navbarSupportedContent">
+                <!-- <nav class="navbar navbar-dark bg-primary" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
+                    <!-- <li class="nav-item">
+                        <a class="nav-link" href="{{ route('doctors.index') }}">{{ __('Doctores') }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('especialidads.index') }}">{{ __('Especialidades') }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('eps.index') }}">{{ __('Eps') }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('historias_clinicas.index') }}">{{ __('Historia Clinica') }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('pacientes.index') }}">{{ __('Pacientes') }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('agendamiento_de_citas.index') }}">{{ __('Agendar Cita') }}</a>
+                    </li>
                     <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                    <a class="nav-link" href="{{ route('doctors.index') }}">{{ __('Doctores') }}</a>
-                    </li>
-                    <li class="nav-item">
-                    <a class="nav-link" href="{{ route('especialidads.index') }}">{{ __('Especialidades') }}</a>
-                    </li>
-                    <li class="nav-item">
-                    <a class="nav-link" href="{{ route('eps.index') }}">{{ __('Eps') }}</a>
-                    </li>
-                    <li class="nav-item">
-                    <a class="nav-link" href="{{ route('historias_clinicas.index') }}">{{ __('Historia Clinica') }}</a>
-                    </li>
-                    <li class="nav-item">
-                    <a class="nav-link" href="{{ route('pacientes.index') }}">{{ __('Pacientes') }}</a>
-                    </li>
-                    <li class="nav-item">
-                    <a class="nav-link" href="{{ route('agendamiento_de_citas.index') }}">{{ __('Agendar Cita') }}</a>
-                    </li>
-                     </ul>
-
-
+                </ul> --> 
+                
+                
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                       <!-- Authentication Links -->
