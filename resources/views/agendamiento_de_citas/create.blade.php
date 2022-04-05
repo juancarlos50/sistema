@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Agendamiento')
+@section('title', 'Agendar Cita')
 
 @section('content_header')
 <img class="logotipo-barra" src="http://proyectomedicalbases.herokuapp.com/imagenes/isologo_para_barra.png" style="width: 200px; height: 70px;" b="" alt="logotipo">

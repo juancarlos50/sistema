@@ -25,7 +25,6 @@ class AgendamientoDeCitasController extends Controller
         $pacientes = Pacientes::all();
         return view('agendamiento_de_citas.index',$datos, compact('doctors',$doctors,'pacientes', $pacientes));
     }
-
     /**
      * Show the form for creating a new resource.
      *

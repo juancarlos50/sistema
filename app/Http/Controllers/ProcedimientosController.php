@@ -39,9 +39,7 @@ class ProcedimientosController extends Controller
                     break;
                 }
     
-            }
-    
-           
+            }  
             $procedimientos = procedimientos::
             //->join('pacientes','procedimientos.pacientes_id','=','pacientes.id')
             where('pacientes_id','=',$paElejido->id)
@@ -56,7 +54,7 @@ class ProcedimientosController extends Controller
         $doctors = Doctor::all();
         return view('procedimientos.index', $procedimientos,  compact('procedimientos', 'pacientes', $pacientes, 'doctors', $doctors));
     }
-
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -160,13 +158,14 @@ class ProcedimientosController extends Controller
         //
         //$datosprocedimientos = request()->except(['_token','_method']);
         //procedimientos::where('id','=',$id)->update($datosprocedimientos);
+        $procedimientos = procedimientos::findOrFail($id);
 
         $procedimientos->FechaProcedimiento = $request->FechaProcedimiento;
         $procedimientos->pacientes_id = $request->paciente;
         $procedimientos->doctors_id = $request->doctor;
         $procedimientos->DescripcionProcedimiento = $request->DescripcionProcedimiento;
         $procedimientos->update();
-        $procedimientos = procedimientos::findOrFail($id);
+        
         return redirect('historias_clinicas')->with('mensaje', 'Se han Modificado los datos');
     }
 

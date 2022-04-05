@@ -1,4 +1,11 @@
-@extends('layouts.app')
+@extends('adminlte::page')
+
+@section('title', 'Eps')
+
+@section('content_header')
+<img class="logotipo-barra" src="http://proyectomedicalbases.herokuapp.com/imagenes/isologo_para_barra.png" style="width: 200px; height: 70px;" b="" alt="logotipo">
+
+@stop
 
 @section('content')
 <div class="container">
@@ -26,8 +33,7 @@
     <thead class="thead-light">
         <tr>
             <th>Código</th>
-            <th>Nombre EPS</th>
-            <th>Tipo de Afiliacion</th>                 
+            <th>Nombre EPS</th>                
             <th>Acciones</th>
         </tr>
     </thead>
@@ -36,12 +42,7 @@
         @foreach( $eps as $eps1 )
         <tr>
             <td>{{ $eps1->id }}</td>
-
-            
-
             <td>{{ $eps1->Nombreeps }}</td>            
-            <td>{{ $eps1->TipoAfiliado }}</td>
-            
             <td>
                 
             <a href="{{ url('/eps/'.$eps1->id.'/edit') }}" class="btn btn-warning">
@@ -64,4 +65,12 @@
 </table>
  {{$eps->links()}} 
 </div>
-@endsection
+@stop
+
+@section('css')
+    <link rel="stylesheet" href="/css/admin_custom.css">
+@stop
+
+@section('js')
+    <script> console.log('Hi!'); </script>
+@stop

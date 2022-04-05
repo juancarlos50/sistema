@@ -1,10 +1,13 @@
 @extends('adminlte::page')
 
-@section('title', 'Dashboard')
+@section('title', 'Doctores')
 
 @section('content_header')
-<div class="container">
+<img class="logotipo-barra" src="http://proyectomedicalbases.herokuapp.com/imagenes/isologo_para_barra.png" style="width: 200px; height: 70px;" b="" alt="logotipo">
 
+@stop
+
+@section('content')
 @if(Session::has('mensaje'))
 <div class="alert alert-success alert-dismissible" role="alert">
 {{Session::get('mensaje') }}
@@ -83,10 +86,6 @@
 </table>
  {{$doctors->links()}} 
 </div>
-@stop
-
-@section('content')
-    <p></p>
 @stop
 
 @section('css')

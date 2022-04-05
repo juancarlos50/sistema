@@ -23,7 +23,7 @@
 
 
 <div class="row">
-<div class="col-sm">
+<div class="col-sm-5">
     <form action="{{ url('procedimientos/search') }}" method="post">
         @csrf
         <div>
@@ -57,7 +57,7 @@
             <td>{{ $procedimiento->id }}</td>
             <td>{{ $procedimiento->FechaProcedimiento }}</td>     
             <td>{{ $procedimiento->pacientes->Nombrepaciente}}</td> 
-            <td>{{ $procedimiento->doctor_Nombredoctor}}</td> 
+            <td>{{ $procedimiento->doctors_id }}</td> 
             <td>{{ $procedimiento->DescripcionProcedimiento }}</td>
 
 
